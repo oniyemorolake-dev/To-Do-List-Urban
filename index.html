@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban HelpHub — Project Master Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--p:#1a1a2e;--a:#6b3fa0;--l:#c8a8e9;--ll:#ecdff7;--g:#27500a;--gb:#eaf3de;--r:#791f1f;--rb:#fcebeb;--am:#633806;--ab:#faeeda;--b:#0c447c;--bb:#e6f1fb;--w:#fff;--cr:#faf7fd;--t:#2a1a3e;--tm:#5a4570;--tl:#9980b0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--p);color:var(--t);min-height:100vh;}
+.hero{background:linear-gradient(135deg,#1a1a2e,#2d1a4e);padding:3rem 2rem;text-align:center;border-bottom:1px solid rgba(200,168,233,0.2);}
+.hero-logo{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;color:var(--l);margin-bottom:0.5rem;}
+.hero-sub{font-size:1rem;color:rgba(200,168,233,0.7);margin-bottom:1rem;}
+.hero-badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hbadge{background:rgba(200,168,233,0.15);color:var(--l);font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid rgba(200,168,233,0.3);}
+.container{max-width:900px;margin:0 auto;padding:2rem;}
+.section{background:var(--w);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem;border:0.5px solid rgba(200,168,233,0.2);}
+.section-hdr{display:flex;align-items:center;gap:10px;margin-bottom:1.2rem;padding-bottom:1rem;border-bottom:1px solid var(--ll);}
+.section-icon{font-size:1.5rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--t);}
+.section-sub{font-size:12px;color:var(--tl);margin-top:2px;}
+.week{margin-bottom:1.2rem;}
+.week-hdr{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.week-badge{background:var(--a);color:white;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;white-space:nowrap;}
+.week-title{font-size:14px;font-weight:500;color:var(--t);}
+.tasks{display:flex;flex-direction:column;gap:6px;}
+.task{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--cr);border-radius:10px;border:0.5px solid rgba(200,168,233,0.2);}
+.task-check{width:18px;height:18px;border:2px solid var(--l);border-radius:4px;flex-shrink:0;margin-top:1px;cursor:pointer;}
+.task-text{font-size:13px;color:var(--tm);line-height:1.5;font-weight:300;}
+.task-text strong{color:var(--t);font-weight:500;}
+.task.priority{border-left:3px solid var(--a);}
+.task.done{opacity:0.5;}
+.tag{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:10px;margin-left:6px;}
+.tag-you{background:var(--bb);color:var(--b);}
+.tag-dad{background:var(--gb);color:var(--g);}
+.tag-friend{background:var(--ab);color:var(--am);}
+.tag-legal{background:var(--rb);color:var(--r);}
+.tag-sis{background:var(--ll);color:var(--a);}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;}
+.price-card{background:var(--cr);border-radius:14px;padding:1.2rem;border:0.5px solid rgba(200,168,233,0.2);}
+.price-card-title{font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--tl);margin-bottom:8px;}
+.price-item{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid rgba(200,168,233,0.15);font-size:13px;}
+.price-item:last-child{border-bottom:none;}
+.price-label{color:var(--tm);font-weight:300;}
+.price-val{font-weight:500;color:var(--t);}
+.price-val.green{color:var(--g);}
+.price-val.red{color:var(--r);}
+.price-val.purple{color:var(--a);}
+.legal-item{padding:12px;background:var(--cr);border-radius:12px;border-left:3px solid var(--a);margin-bottom:8px;}
+.legal-title{font-size:13px;font-weight:500;color:var(--t);margin-bottom:4px;}
+.legal-desc{font-size:12px;color:var(--tm);line-height:1.6;font-weight:300;}
+.legal-urgent{border-left-color:var(--r);background:var(--rb);}
+.legal-title.urgent{color:var(--r);}
+.revenue-calc{background:linear-gradient(135deg,var(--a),#3d1a6e);border-radius:16px;padding:1.5rem;color:white;margin-top:1rem;}
+.calc-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:1rem;opacity:0.9;}
+.calc-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:13px;}
+.calc-row:last-child{border-bottom:none;font-weight:500;font-size:14px;margin-top:4px;}
+.calc-label{opacity:0.8;}
+.calc-val{font-weight:500;}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;}
+.team-card{background:var(--cr);border-radius:14px;padding:1.2rem;text-align:center;border:0.5px solid rgba(200,168,233,0.2);}
+.team-emoji{font-size:2rem;margin-bottom:8px;}
+.team-name{font-size:14px;font-weight:500;color:var(--t);margin-bottom:4px;}
+.team-role{font-size:11px;color:var(--tl);margin-bottom:8px;}
+.team-tasks{text-align:left;}
+.team-task{font-size:11px;color:var(--tm);padding:3px 0;display:flex;gap:6px;align-items:flex-start;}
+.team-task::before{content:'→';color:var(--l);flex-shrink:0;}
+.stack-item{display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--cr);border-radius:10px;margin-bottom:6px;}
+.stack-icon{font-size:1.4rem;flex-shrink:0;}
+.stack-name{font-size:13px;font-weight:500;color:var(--t);}
+.stack-desc{font-size:11px;color:var(--tl);margin-top:1px;}
+.stack-cost{font-size:12px;font-weight:500;color:var(--g);margin-left:auto;flex-shrink:0;}
+.milestone{display:flex;gap:12px;padding:12px;background:var(--cr);border-radius:12px;margin-bottom:8px;align-items:flex-start;}
+.milestone-dot{width:12px;height:12px;border-radius:50%;background:var(--l);flex-shrink:0;margin-top:3px;}
+.milestone-dot.done{background:var(--g);}
+.milestone-dot.big{background:var(--a);width:16px;height:16px;}
+.milestone-content{flex:1;}
+.milestone-title{font-size:13px;font-weight:500;color:var(--t);margin-bottom:2px;}
+.milestone-desc{font-size:11px;color:var(--tl);line-height:1.5;}
+.alert{background:rgba(107,63,160,0.1);border:1px solid rgba(200,168,233,0.4);border-radius:12px;padding:1rem;margin-bottom:1rem;font-size:13px;color:var(--tm);line-height:1.6;}
+.alert strong{color:var(--a);}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-logo">Urban HelpHub</div>
+  <div class="hero-sub">Project Master Plan · Built by Morolake Oniye</div>
+  <div class="hero-badges">
+    <span class="hbadge">Co-founder & CTO</span>
+    <span class="hbadge">Equity deal</span>
+    <span class="hbadge">Calgary launch</span>
+    <span class="hbadge">Marketplace platform</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- TEAM -->
+  <div class="section">
+    <div class="section-hdr">
+      <span class="section-icon">👥</span>
+      <div><div class="section-title">The team</div><div class="section-sub">Everyone's role</div></div>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-emoji">👩🏾‍💻</div>
+        <div class="team-name">Morolake</div>
+        <div class="team-role">CTO · Co-founder</div>
+        <div class="team-tasks">
+          <div class="team-task">Build the entire platform</div>
+          <div class="team-task">Database design (Oracle)</div>
+          <div class="team-task">Frontend development</div>
+          <div class="team-task">Stripe + Firebase integration</div>
+          <div class="team-task">Ongoing maintenance</div>
+          <div class="team-task">Also runs MO-WEBCO</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-emoji">👨🏾</div>
+        <div class="team-name">Your Friend</div>
+        <div class="team-role">CEO · Business Owner</div>
+        <div class="team-tasks">
+          <div class="team-task">Business vision and direction</div>
+          <div class="team-task">Facebook community marketing</div>
+          <div class="team-task">Calgary outreach</div>
+          <div class="team-task">User growth strategy</div>
+          <div class="team-task">Customer support</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-emoji">👨🏾‍💼</div>
+        <div class="team-name">Your Dad</div>
+        <div class="team-role">Business Analyst</div>
+        <div class="team-tasks">
+          <div class="team-task">Requirements gathering</div>
+          <div class="team-task">UML diagrams</div>
+          <div class="team-task">ERD design</div>
+          <div class="team-task">Process documentation</div>
+          <div class="team-task">Legal guidance</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-emoji">📞</div>
+        <div class="team-name">Your Sister</div>
+        <div class="team-role">Sales · MO-WEBCO</div>
+        <div class="team-tasks">
+          <div class="team-task">Cold calling salons</div>
+          <div class="team-task">Lead generation</div>
+          <div class="team-task">Commission based</div>
+          <div class="team-task">Not involved in HelpHub</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div class="section">
+    <div class="section-hdr">
+      <span class="section-icon">⚙️</span>
+      <div><div class="section-title">Tech stack</div><div class="section-sub">What you're building with</div></div>
+    </div>
+    <div class="stack-item"><span class="stack-icon">🌐</span><div><div class="stack-name">HTML / CSS / JavaScript</div><div class="stack-desc">Frontend — you already know this ✅</div></div><span class="stack-cost">Free</span></div>
+    <div class="stack-item"><span class="stack-icon">🔥</span><div><div class="stack-name">Firebase Authentication</div><div class="stack-desc">User login, signup, password reset — handles security</div></div><span class="stack-cost">Free</span></div>
+    <div class="stack-item"><span class="stack-icon">🗄️</span><div><div class="stack-name">Oracle Database</div><div class="stack-desc">Stores all users, jobs, payments, reviews — you know SQL ✅</div></div><span class="stack-cost">Free tier</span></div>
+    <div class="stack-item"><span class="stack-icon">💳</span><div><div class="stack-name">Stripe</div><div class="stack-desc">Payment processing — handles 30/70 split automatically</div></div><span class="stack-cost">2.9% + 30¢/transaction</span></div>
+    <div class="stack-item"><span class="stack-icon">🚀</span><div><div class="stack-name">Node.js</div><div class="stack-desc">Backend server — connects Oracle to your website</div></div><span class="stack-cost">Free</span></div>
+    <div class="stack-item"><span class="stack-icon">📱</span><div><div class="stack-name">React Native (Phase 3)</div><div class="stack-desc">Mobile app for iOS and Android — build after website works</div></div><span class="stack-cost">Free</span></div>
+    <div class="stack-item"><span class="stack-icon">☁️</span><div><div class="stack-name">GitHub Pages / Heroku</div><div class="stack-desc">Hosting the website and backend</div></div><span class="stack-cost">Free to start</span></div>
+  </div>
+
+  <!-- WEEKLY TODO -->
+  <div class="section">
+    <div class="section-hdr">
+      <span class="section-icon">📅</span>
+      <div><div class="section-title">Weekly todo list</div><div class="section-sub">Step by step from today to launch</div></div>
+    </div>
+
+    <div class="alert"><strong>Important:</strong> Keep sending 10 MO-WEBCO cold emails every single day throughout ALL of these weeks. Urban HelpHub is your future. MO-WEBCO pays your bills now. Never stop both.</div>
+
+    <!-- WEEK 0 -->
+    <div class="week">
+      <div class="week-hdr"><span class="week-badge">This week</span><span class="week-title">Foundation — lock everything in</span></div>
+      <div class="tasks">
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Buy urbanhelphub.com domain</strong> — use code NEWCOM679 for C$6.79 <span class="tag tag-you">You</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Send equity confirmation email</strong> — get his reply in writing before building anything <span class="tag tag-legal">Legal</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Agree on your equity percentage</strong> — push for 30-40% minimum since you're building everything <span class="tag tag-legal">Legal</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Your dad meets with your friend</strong> — requirements gathering session, 1-2 hours <span class="tag tag-dad">Dad</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Create Urban HelpHub Instagram</strong> — @urbanhelphub, even if empty, grab the handle now <span class="tag tag-friend">Friend</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Your friend posts in Facebook group</strong> — "Something big is coming, who wants to be a beta tester?" <span class="tag tag-friend">Friend</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Set up GitHub repo</strong> — create urbanhelphub repo for the project code <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Send 10 MO-WEBCO emails every day</strong> — non negotiable <span class="tag tag-you">You</span></div></div>
+      </div>
+    </div>
+
+    <!-- WEEK 1 -->
+    <div class="week">
+      <div class="week-hdr"><span class="week-badge">Week 1</span><span class="week-title">Planning and design</span></div>
+      <div class="tasks">
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Dad draws Use Case diagram</strong> — all actors and what they can do <span class="tag tag-dad">Dad</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Dad draws ERD</strong> — entity relationship diagram for Oracle database <span class="tag tag-dad">Dad</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Design Oracle database tables</strong> — Users, Jobs, Applications, Payments, Reviews <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Create tables in Oracle APEX</strong> — same schema you use in CPRG 250 <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Design wireframes on paper</strong> — sketch homepage, job listing, profile, post a job <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Dad writes requirements document</strong> — functional and non-functional requirements <span class="tag tag-dad">Dad</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Dad draws Sequence diagram</strong> — how a job goes from posted to completed and paid <span class="tag tag-dad">Dad</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Learn Firebase basics</strong> — watch "Firebase for beginners 2026" on YouTube, 3-4 hours <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Build coming soon page</strong> — simple page at urbanhelphub.com with email signup <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Friend collects waitlist emails</strong> — post coming soon link in Facebook group <span class="tag tag-friend">Friend</span></div></div>
+      </div>
+    </div>
+
+    <!-- WEEK 2 -->
+    <div class="week">
+      <div class="week-hdr"><span class="week-badge">Week 2</span><span class="week-title">Authentication — user accounts</span></div>
+      <div class="tasks">
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Build signup page</strong> — name, email, password, choose role (poster or worker) <span class="tag tag-you">You</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Build login page</strong> — email and password, remember me, forgot password <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Connect Firebase Authentication</strong> — handles all the security so you don't have to <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Save user to Oracle on signup</strong> — Firebase handles login, Oracle stores their profile <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Build basic user dashboard</strong> — simple page users see after logging in <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Build user profile page</strong> — name, photo, bio, ratings, job history <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Email verification</strong> — Firebase sends verification email on signup <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Test signup and login thoroughly</strong> — create 5 test accounts, find and fix bugs <span class="tag tag-you">You</span></div></div>
+      </div>
+    </div>
+
+    <!-- WEEK 3 -->
+    <div class="week">
+      <div class="week-hdr"><span class="week-badge">Week 3</span><span class="week-title">Job posting and browsing</span></div>
+      <div class="tasks">
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Build post a job form</strong> — title, description, budget, category, location, deadline <span class="tag tag-you">You</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Save job to Oracle database</strong> — INSERT INTO jobs table <span class="tag tag-you">You</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Build jobs listing page</strong> — shows all open jobs, clean card layout <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Build job detail page</strong> — full description, poster profile, apply button <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Build search and filter</strong> — search by keyword, filter by category, budget range, location <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Build job categories</strong> — cleaning, delivery, handyman, gardening, moving, other <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Dad draws Activity diagram</strong> — job posting flow from start to finish <span class="tag tag-dad">Dad</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Test with 3 real people</strong> — ask friends to post fake jobs and browse <span class="tag tag-you">You</span></div></div>
+      </div>
+    </div>
+
+    <!-- WEEK 4 -->
+    <div class="week">
+      <div class="week-hdr"><span class="week-badge">Week 4</span><span class="week-title">Applications system</span></div>
+      <div class="tasks">
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Build apply for job form</strong> — message to poster, proposed price, availability <span class="tag tag-you">You</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Save application to Oracle</strong> — INSERT INTO applications table <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Build applications inbox for posters</strong> — see all who applied, their profiles and prices <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Accept and reject applications</strong> — poster can accept one worker, reject others <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Email notifications</strong> — email worker when accepted or rejected <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Update job status</strong> — open → in progress → completed <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Build worker dashboard</strong> — jobs applied for, jobs in progress, completed jobs <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Full end to end test</strong> — post job, apply, accept, complete the full flow <span class="tag tag-you">You</span></div></div>
+      </div>
+    </div>
+
+    <!-- WEEK 5 -->
+    <div class="week">
+      <div class="week-hdr"><span class="week-badge">Week 5</span><span class="week-title">Payments — Stripe integration</span></div>
+      <div class="tasks">
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Set up Stripe account</strong> — your friend registers as the business owner <span class="tag tag-friend">Friend</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Learn Stripe Connect basics</strong> — this handles splitting payments between workers and platform <span class="tag tag-you">You</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Build payment page</strong> — poster pays when they accept a worker <span class="tag tag-you">You</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Build 30/70 split logic</strong> — 30% to platform, 70% to worker automatically <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Worker payout setup</strong> — workers connect their bank account via Stripe <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Save payment records to Oracle</strong> — INSERT INTO payments table <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Payment history page</strong> — users can see all their transactions <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Test payments in Stripe test mode</strong> — use Stripe test cards before going live <span class="tag tag-you">You</span></div></div>
+      </div>
+    </div>
+
+    <!-- WEEK 6 -->
+    <div class="week">
+      <div class="week-hdr"><span class="week-badge">Week 6</span><span class="week-title">Reviews, ratings and admin</span></div>
+      <div class="tasks">
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Build review system</strong> — after job complete both parties leave star rating and comment <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Display ratings on profiles</strong> — average star rating and review count visible to all <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Build admin dashboard</strong> — your friend logs in and sees all users, jobs, revenue <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Admin can remove users and jobs</strong> — moderation tools <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Revenue tracker for admin</strong> — total jobs, total revenue, platform's 30% earnings <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Full platform test</strong> — test every single feature end to end <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Fix all bugs found in testing</strong></div></div>
+      </div>
+    </div>
+
+    <!-- WEEK 7-8 -->
+    <div class="week">
+      <div class="week-hdr"><span class="week-badge">Week 7-8</span><span class="week-title">Beta launch with Facebook community</span></div>
+      <div class="tasks">
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Soft launch to waitlist</strong> — email everyone who signed up on coming soon page <span class="tag tag-friend">Friend</span></div></div>
+        <div class="task priority"><div class="task-check"></div><div class="task-text"><strong>Friend posts in Facebook group</strong> — "Urban HelpHub is live! Sign up here" <span class="tag tag-friend">Friend</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Personally message first 50 signups</strong> — welcome them, help them post first job <span class="tag tag-friend">Friend</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Monitor everything closely</strong> — watch for bugs, slow pages, payment errors <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Fix any issues immediately</strong> — fast fixes build trust with early users <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Collect feedback from users</strong> — what's confusing, what's missing, what they love <span class="tag tag-friend">Friend</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Post on Reddit r/Calgary</strong> — "Built a platform for Calgary odd jobs — beta testers welcome" <span class="tag tag-friend">Friend</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Post on Kijiji</strong> — both jobs section and services section <span class="tag tag-friend">Friend</span></div></div>
+      </div>
+    </div>
+
+    <!-- MONTH 2-3 -->
+    <div class="week">
+      <div class="week-hdr"><span class="week-badge">Month 2-3</span><span class="week-title">Growth and improvements</span></div>
+      <div class="tasks">
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Add identity verification</strong> — Stripe Identity or similar API for worker verification <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Add in-app messaging</strong> — posters and workers can chat directly on platform <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Add push notifications</strong> — new application, job accepted, payment received <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Improve search and filters</strong> — based on user feedback <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>University campus marketing</strong> — flyers at SAIT, UCalgary, MRU <span class="tag tag-friend">Friend</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Start Instagram and TikTok content</strong> — success stories, "I made $X this week" <span class="tag tag-friend">Friend</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Register the business officially</strong> — Alberta Business Registry <span class="tag tag-legal">Legal</span></div></div>
+      </div>
+    </div>
+
+    <!-- MONTH 3-4 -->
+    <div class="week">
+      <div class="week-hdr"><span class="week-badge">Month 3-4</span><span class="week-title">Mobile app</span></div>
+      <div class="tasks">
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Learn React Native basics</strong> — 2-3 weeks, builds iOS and Android at same time <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Build mobile app version</strong> — same features as website, mobile optimised <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Submit to App Store</strong> — Apple charges $99/year developer fee <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Submit to Google Play Store</strong> — Google charges $25 one time fee <span class="tag tag-you">You</span></div></div>
+        <div class="task"><div class="task-check"></div><div class="task-text"><strong>Push notifications on mobile</strong> — real time alerts for new jobs and applications <span class="tag tag-you">You</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING AND REVENUE -->
+  <div class="section">
+    <div class="section-hdr">
+      <span class="section-icon">💰</span>
+      <div><div class="section-title">Pricing and revenue model</div><div class="section-sub">How Urban HelpHub makes money</div></div>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-card-title">Platform fees (your revenue)</div>
+        <div class="price-item"><span class="price-label">Platform cut per job</span><span class="price-val purple">30%</span></div>
+        <div class="price-item"><span class="price-label">Worker keeps</span><span class="price-val green">70%</span></div>
+        <div class="price-item"><span class="price-label">Stripe fee per transaction</span><span class="price-val red">2.9% + 30¢</span></div>
+        <div class="price-item"><span class="price-label">Sign up fee</span><span class="price-val green">Free</span></div>
+        <div class="price-item"><span class="price-label">Listing fee</span><span class="price-val green">Free</span></div>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-title">Startup costs</div>
+        <div class="price-item"><span class="price-label">urbanhelphub.com domain</span><span class="price-val">C$6.79</span></div>
+        <div class="price-item"><span class="price-label">Firebase hosting</span><span class="price-val green">Free</span></div>
+        <div class="price-item"><span class="price-label">Oracle database</span><span class="price-val green">Free tier</span></div>
+        <div class="price-item"><span class="price-label">Stripe setup</span><span class="price-val green">Free</span></div>
+        <div class="price-item"><span class="price-label">App Store (later)</span><span class="price-val">$99/yr</span></div>
+        <div class="price-item"><span class="price-label">Google Play (later)</span><span class="price-val">$25 once</span></div>
+        <div class="price-item"><span class="price-label"><strong>Total to launch</strong></span><span class="price-val purple"><strong>~C$7</strong></span></div>
+      </div>
+    </div>
+
+    <div class="revenue-calc">
+      <div class="calc-title">Revenue projections</div>
+      <div class="calc-row"><span class="calc-label">Average job value</span><span class="calc-val">$60</span></div>
+      <div class="calc-row"><span class="calc-label">Platform keeps 30%</span><span class="calc-val">$18 per job</span></div>
+      <div class="calc-row"><span class="calc-label">Stripe fee (~3%)</span><span class="calc-val">-$2.10</span></div>
+      <div class="calc-row"><span class="calc-label">Net per job</span><span class="calc-val">~$15.90</span></div>
+      <div style="height:1px;background:rgba(255,255,255,0.2);margin:10px 0;"></div>
+      <div class="calc-row"><span class="calc-label">100 jobs/month</span><span class="calc-val">$1,590/month</span></div>
+      <div class="calc-row"><span class="calc-label">500 jobs/month</span><span class="calc-val">$7,950/month</span></div>
+      <div class="calc-row"><span class="calc-label">1,000 jobs/month</span><span class="calc-val">$15,900/month</span></div>
+      <div style="height:1px;background:rgba(255,255,255,0.2);margin:10px 0;"></div>
+      <div class="calc-row"><span class="calc-label">Your 35% equity of 1,000 jobs/month</span><span class="calc-val">$5,565/month 🎉</span></div>
+    </div>
+  </div>
+
+  <!-- LEGAL -->
+  <div class="section">
+    <div class="section-hdr">
+      <span class="section-icon">⚖️</span>
+      <div><div class="section-title">Legal aspects</div><div class="section-sub">What you need to protect yourself</div></div>
+    </div>
+
+    <div class="legal-item legal-urgent">
+      <div class="legal-title urgent">🚨 URGENT — Equity agreement in writing</div>
+      <div class="legal-desc">Before you write a single line of code get your equity percentage confirmed in writing via email at minimum. Even just "I confirm Morolake receives X% of Urban HelpHub revenue" replied by your friend is legally meaningful. Your dad can help draft something more formal. This protects you if anything goes wrong later.</div>
+    </div>
+
+    <div class="legal-item legal-urgent">
+      <div class="legal-title urgent">🚨 URGENT — Terms and conditions on the platform</div>
+      <div class="legal-desc">Before launch the platform needs Terms of Service and Privacy Policy pages. These protect you legally if a job goes wrong, a user gets scammed, or a dispute happens. Use a free generator like termsfeed.com to create these — your dad can review them.</div>
+    </div>
+
+    <div class="legal-item">
+      <div class="legal-title">Register the business in Alberta</div>
+      <div class="legal-desc">Once you start making real money register as a business through Alberta Business Registry (alberta.ca). Options: Sole proprietorship (~$60), Partnership (~$60), or Corporation (~$450). Your dad as a business analyst can advise which is best for your situation. Don't do this until you have users and revenue.</div>
+    </div>
+
+    <div class="legal-item">
+      <div class="legal-title">GST registration</div>
+      <div class="legal-desc">In Canada you must register for GST once you earn over $30,000/year. Under that threshold it's optional. Keep this in mind as the platform grows. Your dad or an accountant can help with this when the time comes.</div>
+    </div>
+
+    <div class="legal-item">
+      <div class="legal-title">Data privacy — PIPEDA compliance</div>
+      <div class="legal-desc">Canada's privacy law (PIPEDA) requires you to protect user data, have a clear privacy policy, and not sell user information. Firebase and Oracle both have strong security — just make sure you have a privacy policy page before launch.</div>
+    </div>
+
+    <div class="legal-item">
+      <div class="legal-title">Payment liability</div>
+      <div class="legal-desc">Stripe handles payment security and PCI compliance — you're not responsible for storing card numbers. However your Terms of Service should clearly state the platform is not responsible for disputes between posters and workers. Add a dispute resolution process.</div>
+    </div>
+
+    <div class="legal-item">
+      <div class="legal-title">Worker classification</div>
+      <div class="legal-desc">Workers on your platform are independent contractors, not employees. Make this clear in your Terms of Service. They are responsible for their own taxes on earnings. This is how Uber, TaskRabbit and Fiverr all operate.</div>
+    </div>
+
+    <div class="legal-item">
+      <div class="legal-title">Insurance consideration</div>
+      <div class="legal-desc">Eventually consider platform liability insurance — in case something goes wrong during a job (e.g. worker damages property). Not needed at launch but worth thinking about at 500+ users. Your dad can advise on this.</div>
+    </div>
+  </div>
+
+  <!-- MILESTONES -->
+  <div class="section">
+    <div class="section-hdr">
+      <span class="section-icon">🏆</span>
+      <div><div class="section-title">Key milestones</div><div class="section-sub">How you know you're winning</div></div>
+    </div>
+    <div class="milestone"><div class="milestone-dot"></div><div class="milestone-content"><div class="milestone-title">Domain purchased + equity agreed</div><div class="milestone-desc">This week — foundation locked in</div></div></div>
+    <div class="milestone"><div class="milestone-dot"></div><div class="milestone-content"><div class="milestone-title">Coming soon page live + 50 waitlist signups</div><div class="milestone-desc">Week 1 — proof of interest</div></div></div>
+    <div class="milestone"><div class="milestone-dot"></div><div class="milestone-content"><div class="milestone-title">User accounts working</div><div class="milestone-desc">Week 2 — people can sign up and log in</div></div></div>
+    <div class="milestone"><div class="milestone-dot"></div><div class="milestone-content"><div class="milestone-title">First job posted on the platform</div><div class="milestone-desc">Week 3 — the core product exists</div></div></div>
+    <div class="milestone"><div class="milestone-dot"></div><div class="milestone-content"><div class="milestone-title">First job application submitted</div><div class="milestone-desc">Week 4 — the marketplace is working</div></div></div>
+    <div class="milestone"><div class="milestone-dot big"></div><div class="milestone-content"><div class="milestone-title">First real payment processed</div><div class="milestone-desc">Week 5-6 — money moves through the platform 🎉</div></div></div>
+    <div class="milestone"><div class="milestone-dot big"></div><div class="milestone-content"><div class="milestone-title">100 users signed up</div><div class="milestone-desc">Month 2 — real traction</div></div></div>
+    <div class="milestone"><div class="milestone-dot big"></div><div class="milestone-content"><div class="milestone-title">First equity payment to you</div><div class="milestone-desc">Month 2-3 — passive income begins</div></div></div>
+    <div class="milestone"><div class="milestone-dot big"></div><div class="milestone-content"><div class="milestone-title">Mobile app live on App Store</div><div class="milestone-desc">Month 4 — full platform complete</div></div></div>
+    <div class="milestone"><div class="milestone-dot big"></div><div class="milestone-content"><div class="milestone-title">500 users, 100 jobs/month</div><div class="milestone-desc">Month 6 — earning $1,500+/month passive 🚀</div></div></div>
+  </div>
+
+  <div style="text-align:center;padding:2rem;color:rgba(200,168,233,0.5);font-size:12px;">
+    Urban HelpHub · Built by Morolake Oniye · MO-WEBCO · 2026
+  </div>
+
+</div>
+</body>
+</html>
