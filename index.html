@@ -31,7 +31,7 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
 .wbadge.done{background:var(--g);}
 .wbadge.urgent{background:#c44d00;}
 .wbadge.mowebco{background:#c44d6e;}
-.wbadge.helphub{background:#0c447c;}
+.wbadge.quickgigs{background:#0c447c;}
 .wtitle{font-size:13px;font-weight:500;color:var(--t);}
 .tasks{display:flex;flex-direction:column;gap:5px;}
 .task{display:flex;align-items:flex-start;gap:8px;padding:9px 11px;background:var(--cr);border-radius:9px;border:0.5px solid rgba(200,168,233,0.2);cursor:pointer;transition:background 0.15s;}
@@ -75,7 +75,7 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
   <div class="badges">
     <span class="badge">✅ Registered June 15 2026</span>
     <span class="badge">MO-WEBCO active</span>
-    <span class="badge">Urban HelpHub building</span>
+    <span class="badge">QuickGigs building</span>
     <span class="badge">Calgary → Canada</span>
   </div>
 </div>
@@ -83,7 +83,7 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
 <div class="tabs">
   <div class="tab on" onclick="switchTab('todo',this)">📋 Master Todo</div>
   <div class="tab" onclick="switchTab('mowebco',this)">💅 MO-WEBCO</div>
-  <div class="tab" onclick="switchTab('helphub',this)">🏙️ Urban HelpHub</div>
+  <div class="tab" onclick="switchTab('quickgigs',this)">🏙️ QuickGigs</div>
   <div class="tab" onclick="switchTab('motechco',this)">🏢 MoTechCo</div>
 </div>
 
@@ -105,7 +105,7 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
   </div>
 
   <div class="alert">
-    <strong>Non negotiable every single day:</strong> Send 10 MO-WEBCO cold emails every morning. MO-WEBCO pays your bills now. Urban HelpHub is your future. Never stop both.
+    <strong>Non negotiable every single day:</strong> Send 10 MO-WEBCO cold emails every morning. MO-WEBCO pays your bills now. QuickGigs is your future. Never stop both.
   </div>
 
   <!-- TONIGHT -->
@@ -144,7 +144,7 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
       <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Post MO-WEBCO ad on Kijiji Calgary</strong> — free, gets real local traffic <span class="tag tm2">MO-WEBCO</span></div></div>
       <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Join Calgary Black Chamber of Commerce</strong> — calgaryblackchamber.com, free, massive network <span class="tag ty">You</span></div></div>
       <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Apply to LiftOff program</strong> — free 12 month coaching, office space, mentorship for Black entrepreneurs <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Buy urbanhelphub.com domain</strong> — Namecheap, use code NEWCOM679 for C$6.79, only when ready to build <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Buy quickgigs.com domain</strong> — Namecheap, use code NEWCOM679 for C$6.79, only when ready to build <span class="tag th">HelpHub</span></div></div>
     </div>
   </div>
 
@@ -162,11 +162,11 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
 
   <!-- URBAN HELPHUB -->
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">🏙️</span><div><div class="sec-title">Urban HelpHub — when you're ready</div><div class="sec-sub">Don't start until MO-WEBCO has first client</div></div></div>
+    <div class="sec-hdr"><span class="sec-icon">🏙️</span><div><div class="sec-title">QuickGigs — when you're ready</div><div class="sec-sub">Don't start until MO-WEBCO has first client</div></div></div>
     <div class="tasks">
       <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Decide on partner or go alone</strong> — current friend hasn't confirmed, all-in friend is an option, or build solo <span class="tag th">HelpHub</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Buy urbanhelphub.com domain</strong> — Namecheap C$6.79 with NEWCOM679 <span class="tag th">HelpHub</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build coming soon page at urbanhelphub.com</strong> — email capture, waitlist target 100 emails before launch <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Buy quickgigs.com domain</strong> — Namecheap C$6.79 with NEWCOM679 <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build coming soon page at quickgigs.com</strong> — email capture, waitlist target 100 emails before launch <span class="tag th">HelpHub</span></div></div>
       <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Learn Firebase basics</strong> — YouTube "Firebase for beginners 2026", 3-4 hours <span class="tag th">HelpHub</span></div></div>
       <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Design Oracle database tables</strong> — Users, Jobs, Applications, Payments, Reviews <span class="tag th">HelpHub</span></div></div>
       <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build user signup and login</strong> — Firebase Authentication + Oracle storage <span class="tag th">HelpHub</span></div></div>
@@ -245,7 +245,7 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
 </div>
 
 <!-- URBAN HELPHUB TAB -->
-<div class="screen" id="tab-helphub">
+<div class="screen" id="tab-quickgigs">
   <div class="alert">
     <strong>Status:</strong> Planning phase · No partner confirmed yet · Domain not purchased yet · Build starts after MO-WEBCO gets first client
   </div>
@@ -255,7 +255,7 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
     <div class="tasks">
       <div class="task pri urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Decide on partner situation</strong> — original friend not confirming, all-in friend available, or go solo <span class="tag tl">Urgent</span></div></div>
       <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>If going with all-in friend</strong> — pitch him the full vision, same proposal email <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>If going solo</strong> — you own 100%, register Urban HelpHub as trade name under MoTechCo for $59 <span class="tag tl">Legal</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>If going solo</strong> — you own 100%, register QuickGigs as trade name under MoTechCo for $59 <span class="tag tl">Legal</span></div></div>
       <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Get any partnership agreement in writing</strong> — email confirmation minimum before building anything <span class="tag tl">Legal</span></div></div>
     </div>
   </div>
@@ -263,7 +263,7 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
   <div class="sec">
     <div class="sec-hdr"><span class="sec-icon">🏗️</span><div><div class="sec-title">Build phases</div><div class="sec-sub">In order — do not skip steps</div></div></div>
     <div class="tasks">
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 0 — Buy urbanhelphub.com</strong> — C$6.79 on Namecheap with NEWCOM679 <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 0 — Buy quickgigs.com</strong> — C$6.79 on Namecheap with NEWCOM679 <span class="tag th">HelpHub</span></div></div>
       <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 0 — Build coming soon page</strong> — email waitlist, target 100 signups before launch <span class="tag th">HelpHub</span></div></div>
       <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 1 — Learn Firebase</strong> — YouTube tutorials, 1-2 weeks <span class="tag th">HelpHub</span></div></div>
       <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 1 — Design Oracle database tables</strong> — Users, Jobs, Applications, Payments, Reviews <span class="tag th">HelpHub</span></div></div>
