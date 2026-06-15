@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban HelpHub — Master Plan</title>
+<title>MoTechCo — Master Plan</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{--p:#1a1a2e;--a:#6b3fa0;--l:#c8a8e9;--ll:#ecdff7;--g:#27500a;--gb:#eaf3de;--r:#791f1f;--rb:#fcebeb;--am:#633806;--ab:#faeeda;--b:#0c447c;--bb:#e6f1fb;--w:#fff;--cr:#faf7fd;--t:#2a1a3e;--tm:#5a4570;--tl:#9980b0;}
@@ -30,22 +30,28 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
 .wbadge{background:var(--a);color:white;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap;}
 .wbadge.done{background:var(--g);}
 .wbadge.urgent{background:#c44d00;}
+.wbadge.mowebco{background:#c44d6e;}
+.wbadge.helphub{background:#0c447c;}
 .wtitle{font-size:13px;font-weight:500;color:var(--t);}
 .tasks{display:flex;flex-direction:column;gap:5px;}
 .task{display:flex;align-items:flex-start;gap:8px;padding:9px 11px;background:var(--cr);border-radius:9px;border:0.5px solid rgba(200,168,233,0.2);cursor:pointer;transition:background 0.15s;}
 .task:active{background:var(--ll);}
 .task.pri{border-left:3px solid var(--a);}
 .task.urgent{border-left:3px solid #c44d00;}
+.task.done-task{opacity:0.5;}
 .chk{width:16px;height:16px;border:2px solid var(--l);border-radius:4px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
 .chk.ticked{background:var(--a);border-color:var(--a);}
 .chk.ticked::after{content:'✓';color:white;font-size:10px;font-weight:700;}
 .task-txt{font-size:12px;color:var(--tm);line-height:1.5;font-weight:300;flex:1;}
 .task-txt strong{color:var(--t);font-weight:500;}
+.task-txt.struck{text-decoration:line-through;opacity:0.5;}
 .tag{display:inline-block;font-size:10px;font-weight:500;padding:1px 7px;border-radius:8px;margin-left:5px;}
 .ty{background:var(--bb);color:var(--b);}
 .td{background:var(--gb);color:var(--g);}
 .tf{background:var(--ab);color:var(--am);}
 .tl{background:var(--rb);color:var(--r);}
+.tm2{background:rgba(196,77,110,0.15);color:#c44d6e;}
+.th{background:rgba(12,68,124,0.15);color:#0c447c;}
 .progress-bar{height:4px;background:rgba(200,168,233,0.2);border-radius:2px;margin-bottom:1rem;overflow:hidden;}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--a),var(--l));border-radius:2px;transition:width 0.3s;}
 .progress-label{font-size:11px;color:var(--tl);margin-bottom:6px;display:flex;justify-content:space-between;}
@@ -53,66 +59,37 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
 .stat{background:var(--w);border-radius:12px;padding:12px;text-align:center;border:0.5px solid rgba(200,168,233,0.2);}
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--a);}
 .stat-lbl{font-size:10px;color:var(--tl);margin-top:2px;}
-.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
-.pcard{background:var(--cr);border-radius:12px;padding:1rem;border:0.5px solid rgba(200,168,233,0.2);}
-.pcard-title{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--tl);margin-bottom:8px;}
-.prow{display:flex;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid rgba(200,168,233,0.1);font-size:12px;}
-.prow:last-child{border-bottom:none;}
-.plbl{color:var(--tm);font-weight:300;}
-.pval{font-weight:500;color:var(--t);}
-.pval.g{color:var(--g);}
-.pval.r{color:var(--r);}
-.pval.p{color:var(--a);}
-.calc{background:linear-gradient(135deg,var(--a),#3d1a6e);border-radius:14px;padding:1.2rem;color:white;margin-top:10px;}
-.calc-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:10px;opacity:0.9;}
-.crow{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:12px;}
-.crow:last-child{border-bottom:none;font-weight:500;}
-.clbl{opacity:0.75;}
-.legal{padding:10px;background:var(--cr);border-radius:10px;border-left:3px solid var(--a);margin-bottom:7px;}
-.legal.urg{border-left-color:var(--r);background:var(--rb);}
-.legal-title{font-size:12px;font-weight:500;color:var(--t);margin-bottom:3px;}
-.legal-title.urg{color:var(--r);}
-.legal-desc{font-size:11px;color:var(--tm);line-height:1.5;font-weight:300;}
-.stack{display:flex;align-items:center;gap:10px;padding:9px 11px;background:var(--cr);border-radius:9px;margin-bottom:5px;}
-.stack-icon{font-size:1.2rem;flex-shrink:0;}
-.stack-name{font-size:12px;font-weight:500;color:var(--t);}
-.stack-desc{font-size:11px;color:var(--tl);margin-top:1px;}
-.stack-cost{font-size:11px;font-weight:500;color:var(--g);margin-left:auto;flex-shrink:0;}
-.promo-channel{background:var(--cr);border-radius:10px;padding:10px 12px;margin-bottom:7px;border:0.5px solid rgba(200,168,233,0.2);}
-.promo-title{font-size:12px;font-weight:500;color:var(--t);margin-bottom:5px;display:flex;align-items:center;gap:6px;}
-.promo-items{display:flex;flex-direction:column;gap:3px;}
-.promo-item{font-size:11px;color:var(--tm);font-weight:300;display:flex;gap:6px;}
-.promo-item::before{content:'→';color:var(--l);flex-shrink:0;}
 .alert{background:rgba(107,63,160,0.1);border:1px solid rgba(200,168,233,0.3);border-radius:10px;padding:0.9rem;margin-bottom:1rem;font-size:12px;color:var(--tm);line-height:1.6;}
 .alert strong{color:var(--a);}
+.alert.green{background:rgba(39,80,10,0.1);border-color:rgba(39,80,10,0.3);}
+.alert.green strong{color:var(--g);}
+.divider{height:1px;background:var(--ll);margin:1rem 0;}
 .footer{text-align:center;padding:2rem;color:rgba(200,168,233,0.3);font-size:11px;}
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <div class="hero-logo">Urban HelpHub</div>
-  <div class="hero-sub">Project Master Plan · Morolake Oniye · CTO & Co-founder</div>
+  <div class="hero-logo">MoTechCo 🦋</div>
+  <div class="hero-sub">Master Plan · Morolake Oniye · Founder & CEO</div>
   <div class="badges">
-    <span class="badge">Calgary launch</span>
-    <span class="badge">Job marketplace</span>
-    <span class="badge">Stripe payments</span>
-    <span class="badge">Oracle + Firebase</span>
-    <span class="badge">iOS + Android</span>
+    <span class="badge">✅ Registered June 15 2026</span>
+    <span class="badge">MO-WEBCO active</span>
+    <span class="badge">Urban HelpHub building</span>
+    <span class="badge">Calgary → Canada</span>
   </div>
 </div>
 
 <div class="tabs">
-  <div class="tab on" onclick="switchTab('todo',this)">📋 Todo list</div>
-  <div class="tab" onclick="switchTab('tech',this)">⚙️ Tech stack</div>
-  <div class="tab" onclick="switchTab('money',this)">💰 Money</div>
-  <div class="tab" onclick="switchTab('promo',this)">📣 Promotion</div>
-  <div class="tab" onclick="switchTab('legal',this)">⚖️ Legal</div>
+  <div class="tab on" onclick="switchTab('todo',this)">📋 Master Todo</div>
+  <div class="tab" onclick="switchTab('mowebco',this)">💅 MO-WEBCO</div>
+  <div class="tab" onclick="switchTab('helphub',this)">🏙️ Urban HelpHub</div>
+  <div class="tab" onclick="switchTab('motechco',this)">🏢 MoTechCo</div>
 </div>
 
 <div class="container">
 
-<!-- TODO TAB -->
+<!-- MASTER TODO TAB -->
 <div class="screen on" id="tab-todo">
   <div class="stat-grid">
     <div class="stat"><div class="stat-num" id="s-total">0</div><div class="stat-lbl">Total tasks</div></div>
@@ -123,582 +100,250 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
   <div class="progress-label"><span>Overall progress</span><span id="prog-lbl">0%</span></div>
   <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
 
-  <div class="alert"><strong>Non-negotiable every single day:</strong> Send 10 MO-WEBCO cold emails every morning regardless of what phase you're in. Urban HelpHub is your future. MO-WEBCO pays your bills now. Never stop both.</div>
+  <div class="alert green">
+    <strong>Already done today 🎉</strong> — mowebco.org live · Google Search Console verified · Google My Business set up · MoTechCo registered · 33+ cold emails sent · CRM app live · Call scripts for 21 salons · Excel tracker built
+  </div>
 
+  <div class="alert">
+    <strong>Non negotiable every single day:</strong> Send 10 MO-WEBCO cold emails every morning. MO-WEBCO pays your bills now. Urban HelpHub is your future. Never stop both.
+  </div>
+
+  <!-- TONIGHT -->
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">🚨</span><div><div class="sec-title">This week — urgent</div><div class="sec-sub">Do these before anything else</div></div></div>
-    <div class="tasks" id="w0">
-      <div class="task urgent pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Send partnership proposal to your friend</strong> — the detailed email with all 3 options <span class="tag ty">You</span></div></div>
-      <div class="task urgent pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Wait for his reply and agree on an option</strong> — do not write a single line of code until this is confirmed <span class="tag tl">Legal</span></div></div>
-      <div class="task urgent pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Buy urbanhelphub.com domain</strong> — use code NEWCOM679 for C$6.79 on Namecheap <span class="tag ty">You</span></div></div>
-      <div class="task urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Get written agreement confirmed</strong> — email reply from friend minimum before starting <span class="tag tl">Legal</span></div></div>
-      <div class="task urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Send 10 MO-WEBCO emails today</strong> — non negotiable <span class="tag ty">You</span></div></div>
-      <div class="task urgent pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Reply to friend confirming Option 3 terms</strong> — 55/40/5 split, buyout clause with 4 conditions, you as CTO, him as CEO, dad as Director <span class="tag tl">Legal</span></div></div>
-      <div class="task urgent pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Tell your dad Option 3 was chosen</strong> — he needs to start drafting shareholders agreement immediately <span class="tag td">Dad</span></div></div>
-      <div class="task urgent pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Register Urban HelpHub as Alberta corporation</strong> — go to alberta.ca/corporate-registry, cost ~$450, your friend pays as CEO <span class="tag tl">Legal</span></div></div>
-      <div class="task urgent pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Dad drafts shareholders agreement</strong> — equity percentages, vesting schedule, buyout clause, decision making, what happens if someone leaves <span class="tag td">Dad</span></div></div>
-      <div class="task urgent pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>All three sign shareholders agreement</strong> — you, friend and dad sign BEFORE any code is written <span class="tag tl">Legal</span></div></div>
-      <div class="task urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Open business bank account</strong> — TD, RBC or Scotiabank business account in Urban HelpHub company name, friend opens as CEO, needs incorporation certificate first <span class="tag tf">Friend</span></div></div>
-      <div class="task urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Issue shares formally</strong> — 55% to friend, 40% to you, 5% to dad, recorded in company minute book <span class="tag tl">Legal</span></div></div>
-      <div class="task urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Appoint directors formally</strong> — you, friend and dad all appointed as directors in company records <span class="tag tl">Legal</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Set up GitHub repo called urban-helphub</strong> — separate from MO-WEBCO <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Create @urbanhelphub on Instagram</strong> — grab the handle now <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Create @urbanhelphub on TikTok</strong> — grab the handle now <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Friend posts in Facebook group</strong> — "Something big is coming to Calgary for people who want to earn extra money doing odd jobs. Sign up for early access: urbanhelphub.com" <span class="tag tf">Friend</span></div></div>
+    <div class="sec-hdr"><span class="sec-icon">🌙</span><div><div class="sec-title">Tonight — before bed</div><div class="sec-sub">Almost done for today</div></div></div>
+    <div class="tasks">
+      <div class="task done-task pri" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Register MoTechCo as sole proprietorship</strong> — AMA $59 ✅ DONE</div></div>
+      <div class="task pri urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Check email for MoTechCo certificate</strong> — arrives within 2 hours, save it as PDF <span class="tag ty">You</span></div></div>
+      <div class="task pri urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Check mowebsiteco@gmail.com for salon replies</strong> — you have 33+ emails out there <span class="tag tm2">MO-WEBCO</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add "A MoTechCo company" to mowebco.org footer</strong> — small update via Copilot <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Update email signature</strong> — add MoTechCo · Founder above MO-WEBCO line <span class="tag ty">You</span></div></div>
     </div>
   </div>
 
+  <!-- TOMORROW -->
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">📐</span><div><div class="sec-title">Week 1 — Planning and design</div><div class="sec-sub">No coding yet — design first</div></div></div>
-    <div class="tasks" id="w1">
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Design Oracle database tables on paper</strong> — Users, Jobs, Applications, Payments, Reviews <span class="tag ty">You</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Draw Use Case diagram</strong> — all actors (guest, poster, worker, admin) and what each can do <span class="tag td">Dad</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Draw ERD (Entity Relationship Diagram)</strong> — how Oracle tables connect <span class="tag td">Dad</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Draw Sequence diagram</strong> — how a job goes from posted to completed and paid <span class="tag td">Dad</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Draw Activity diagram</strong> — user signup flow and job posting flow <span class="tag td">Dad</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Write requirements document</strong> — functional and non-functional requirements <span class="tag td">Dad</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Sketch wireframes on paper</strong> — homepage, job listings, post a job, profile, dashboard <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Learn Firebase basics</strong> — search "Firebase for beginners 2026" on YouTube, 3-4 hours <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build coming soon page at urbanhelphub.com</strong> — simple, email capture, "Join the waitlist" <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Target 100 waitlist emails</strong> — friend posts coming soon link in Facebook group <span class="tag tf">Friend</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Set up Google Search Console for urbanhelphub.com</strong> — you already know how ✅ <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Set up Google My Business for Urban HelpHub</strong> — category: Online Marketplace <span class="tag ty">You</span></div></div>
+    <div class="sec-hdr"><span class="sec-icon">☀️</span><div><div class="sec-title">Tomorrow morning — first things</div><div class="sec-sub">In this exact order</div></div></div>
+    <div class="tasks">
+      <div class="task pri urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Open RBC Digital Choice Business Account</strong> — rbc.com/business, upload MoTechCo certificate, $6/month <span class="tag ty">You</span></div></div>
+      <div class="task pri urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Send 10 new cold emails to salons</strong> — non negotiable, use www.mowebco.org as your link now <span class="tag tm2">MO-WEBCO</span></div></div>
+      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Send follow up emails to original 33 salons</strong> — it has been 4+ days, this is where first replies come from <span class="tag tm2">MO-WEBCO</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Check AMA for Servus Business Account $300 cashback</strong> — ama.ab.ca/business, open Servus account to get $300 back <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Update Google My Business website link</strong> — change to www.mowebco.org if not already done <span class="tag tm2">MO-WEBCO</span></div></div>
     </div>
   </div>
 
+  <!-- THIS WEEK -->
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">🔐</span><div><div class="sec-title">Week 2 — User accounts</div><div class="sec-sub">People can sign up and log in</div></div></div>
-    <div class="tasks" id="w2">
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Create Oracle tables in APEX</strong> — Users, Jobs, Applications, Payments, Reviews <span class="tag ty">You</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build signup page</strong> — name, email, password, choose role (poster or worker) <span class="tag ty">You</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build login page</strong> — email and password, remember me, forgot password <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Connect Firebase Authentication</strong> — handles all security and password storage <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Save user to Oracle on signup</strong> — Firebase handles login, Oracle stores profile data <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build user dashboard</strong> — simple page users see after logging in <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build user profile page</strong> — name, photo, bio, ratings, job history <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Email verification on signup</strong> — Firebase sends verification email automatically <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Test with 5 fake accounts</strong> — sign up, log in, log out, reset password <span class="tag ty">You</span></div></div>
+    <div class="sec-hdr"><span class="sec-icon">📅</span><div><div class="sec-title">This week</div><div class="sec-sub">Building momentum</div></div></div>
+    <div class="tasks">
+      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Upload updated CRM to MOWEBCO-App GitHub repo</strong> — new shared storage version with all 20 salons preloaded <span class="tag ty">You</span></div></div>
+      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Upload updated call scripts to MOWEBCO-App GitHub repo</strong> — now has 21 salons including Baiza and Diamond Nails <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Send 10 cold emails every single day this week</strong> — Monday to Sunday, no days off <span class="tag tm2">MO-WEBCO</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Your sister calls all 21 salons</strong> — call scripts app is ready at the GitHub link <span class="tag tm2">MO-WEBCO</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Create @mowebco on Instagram</strong> — start posting MO-WEBCO content <span class="tag tm2">MO-WEBCO</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Post MO-WEBCO ad on Kijiji Calgary</strong> — free, gets real local traffic <span class="tag tm2">MO-WEBCO</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Join Calgary Black Chamber of Commerce</strong> — calgaryblackchamber.com, free, massive network <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Apply to LiftOff program</strong> — free 12 month coaching, office space, mentorship for Black entrepreneurs <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Buy urbanhelphub.com domain</strong> — Namecheap, use code NEWCOM679 for C$6.79, only when ready to build <span class="tag th">HelpHub</span></div></div>
     </div>
   </div>
 
+  <!-- FIRST CLIENT -->
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">📋</span><div><div class="sec-title">Week 3 — Job posting and browsing</div><div class="sec-sub">The core product</div></div></div>
-    <div class="tasks" id="w3">
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build post a job form</strong> — title, description, budget, category, location, deadline <span class="tag ty">You</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Save job to Oracle database</strong> — INSERT INTO jobs table <span class="tag ty">You</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build jobs listing page</strong> — all open jobs shown as clean cards <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build job detail page</strong> — full description, poster profile, apply button <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build search and filter</strong> — search by keyword, filter by category, budget, location <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build job categories</strong> — cleaning, delivery, handyman, gardening, moving, errands, other <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Draw Activity diagram for job posting flow</strong> <span class="tag td">Dad</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Test with 3 real people</strong> — ask friends to post fake jobs and browse <span class="tag ty">You</span></div></div>
+    <div class="sec-hdr"><span class="sec-icon">💰</span><div><div class="sec-title">When first client replies</div><div class="sec-sub">Be ready to move fast</div></div></div>
+    <div class="tasks">
+      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Send quote email within 1 hour of reply</strong> — quote template is ready, just fill in salon name and details <span class="tag tm2">MO-WEBCO</span></div></div>
+      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Get 50% deposit before starting any work</strong> — $200 minimum, Interac e-Transfer to mowebsiteco@gmail.com <span class="tag tm2">MO-WEBCO</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build their website in 7 days</strong> — use existing nail salon or hair salon portfolio as base <span class="tag tm2">MO-WEBCO</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Get testimonial after delivery</strong> — ask for Google review and a quote you can put on mowebco.org <span class="tag tm2">MO-WEBCO</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Raise your prices after first 3 clients</strong> — Starter from $600, Standard from $1,200, Premium from $2,500 <span class="tag tm2">MO-WEBCO</span></div></div>
     </div>
   </div>
 
+  <!-- URBAN HELPHUB -->
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">🤝</span><div><div class="sec-title">Week 4 — Applications system</div><div class="sec-sub">Workers apply, posters hire</div></div></div>
-    <div class="tasks" id="w4">
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build apply for job form</strong> — message, proposed price, availability <span class="tag ty">You</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Save application to Oracle</strong> — INSERT INTO applications table <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build applications inbox for posters</strong> — see all applicants, their profiles and proposed prices <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build accept and reject system</strong> — poster accepts one, others get notified <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Email notifications</strong> — email worker when accepted or rejected <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Update job status automatically</strong> — open → in progress → completed <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build worker dashboard</strong> — jobs applied for, in progress, completed <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Full end to end test</strong> — post job → apply → accept → complete the full flow <span class="tag ty">You</span></div></div>
+    <div class="sec-hdr"><span class="sec-icon">🏙️</span><div><div class="sec-title">Urban HelpHub — when you're ready</div><div class="sec-sub">Don't start until MO-WEBCO has first client</div></div></div>
+    <div class="tasks">
+      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Decide on partner or go alone</strong> — current friend hasn't confirmed, all-in friend is an option, or build solo <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Buy urbanhelphub.com domain</strong> — Namecheap C$6.79 with NEWCOM679 <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build coming soon page at urbanhelphub.com</strong> — email capture, waitlist target 100 emails before launch <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Learn Firebase basics</strong> — YouTube "Firebase for beginners 2026", 3-4 hours <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Design Oracle database tables</strong> — Users, Jobs, Applications, Payments, Reviews <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build user signup and login</strong> — Firebase Authentication + Oracle storage <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build job posting system</strong> — post, browse, search, filter <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build application system</strong> — workers apply, posters hire <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Integrate Stripe payments</strong> — 30/70 split automatic <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build reviews and ratings</strong> — both parties rate after completion <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build admin dashboard</strong> — see all users, jobs, revenue <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Beta launch in Calgary</strong> — Reddit, Kijiji, Facebook groups, university campuses <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build iOS and Android mobile app</strong> — React Native, after website works <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Expand to Edmonton, Vancouver, Toronto</strong> — same platform, new city marketing <span class="tag th">HelpHub</span></div></div>
     </div>
   </div>
 
+  <!-- MOTECHCO GROWTH -->
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">💳</span><div><div class="sec-title">Week 5 — Stripe payments</div><div class="sec-sub">Money moves through the platform</div></div></div>
-    <div class="tasks" id="w5">
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Your friend registers Stripe account</strong> — as the business owner <span class="tag tf">Friend</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Learn Stripe Connect</strong> — handles splitting payments between workers and platform <span class="tag ty">You</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build payment page</strong> — poster pays when they accept a worker <span class="tag ty">You</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build 30/70 split logic</strong> — 30% to platform, 70% to worker automatically <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Worker payout setup</strong> — workers connect their bank account via Stripe <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Save payment records to Oracle</strong> — INSERT INTO payments table <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Payment history page</strong> — users see all their transactions <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Test payments in Stripe test mode</strong> — use Stripe test cards, do not go live until all tests pass <span class="tag ty">You</span></div></div>
-    </div>
-  </div>
-
-  <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">⭐</span><div><div class="sec-title">Week 6 — Reviews and admin</div><div class="sec-sub">Trust and oversight</div></div></div>
-    <div class="tasks" id="w6">
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build review system</strong> — after completion both parties leave star rating and comment <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Display ratings on profiles</strong> — average stars and review count visible to all <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build admin dashboard</strong> — your friend logs in and sees all users, jobs, revenue <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Admin can remove users and jobs</strong> — moderation tools <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Revenue tracker for admin</strong> — total jobs, total revenue, platform 30% earnings <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add Terms of Service page</strong> — use termsfeed.com to generate, dad reviews <span class="tag tl">Legal</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add Privacy Policy page</strong> — PIPEDA compliant <span class="tag tl">Legal</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Full platform test</strong> — test every single feature end to end, fix all bugs <span class="tag ty">You</span></div></div>
-    </div>
-  </div>
-
-  <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">🚀</span><div><div class="sec-title">Week 7-8 — Beta launch</div><div class="sec-sub">Real users, real feedback</div></div></div>
-    <div class="tasks" id="w7">
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Recruit 50 workers before launch</strong> — from friend's Facebook community, workers must be ready before job posters arrive <span class="tag tf">Friend</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Email entire waitlist on launch day</strong> — "Urban HelpHub is live! You're first in" <span class="tag tf">Friend</span></div></div>
-      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Friend posts in all Calgary Facebook groups</strong> — Calgary Buy Nothing, YYC Marketplace, Calgary Community Board <span class="tag tf">Friend</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Post on Reddit r/Calgary</strong> — "We built a platform for Calgary odd jobs — beta testers welcome" <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Post on Kijiji — Jobs section and Services section</strong> <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>First Instagram post</strong> — "Urban HelpHub is live!" <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Post on Nextdoor Calgary</strong> <span class="tag tf">Friend</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Personally message first 50 signups</strong> — "Welcome! Can I help you post your first job?" <span class="tag tf">Friend</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Monitor for bugs closely</strong> — fix immediately, fast fixes build trust <span class="tag ty">You</span></div></div>
-    </div>
-  </div>
-
-  <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">📈</span><div><div class="sec-title">Month 2-3 — Growth</div><div class="sec-sub">Scale what works</div></div></div>
-    <div class="tasks" id="w8">
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add identity verification for workers</strong> — Stripe Identity API <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add in-app messaging</strong> — posters and workers chat on platform <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add referral system</strong> — invite a friend, both get credit <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Set up Google Analytics</strong> — track where users come from <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Set up Mailchimp newsletter</strong> — weekly jobs digest to all users <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>University campus flyers</strong> — SAIT, UCalgary, MRU <span class="tag tf">Friend</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Cold email campaign to Calgary businesses</strong> — Airbnb hosts, restaurants, offices, property managers <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Start Facebook paid ads — $10/day</strong> — only after 50+ active users <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Register business officially in Alberta</strong> — once earning real money <span class="tag tl">Legal</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Post weekly success stories on Instagram and TikTok</strong> — "Sarah made $450 this week" <span class="tag tf">Friend</span></div></div>
-    </div>
-  </div>
-
-  <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">📱</span><div><div class="sec-title">Month 3-4 — Mobile app</div><div class="sec-sub">iOS and Android</div></div></div>
-    <div class="tasks" id="w9">
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Learn React Native basics</strong> — builds iOS and Android at same time, 2-3 weeks <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build mobile app version</strong> — same features as website, mobile optimised <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add push notifications</strong> — new job near you, application received, payment sent <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Submit to Apple App Store</strong> — Apple charges $99/year developer fee <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Submit to Google Play Store</strong> — Google charges $25 one time <span class="tag ty">You</span></div></div>
-    </div>
-  </div>
-
-  <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">🤖</span><div><div class="sec-title">Month 4+ — AI features</div><div class="sec-sub">Smart platform</div></div></div>
-    <div class="tasks" id="w10">
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>AI job matching</strong> — suggests the right worker for each job automatically using Claude API <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>AI price suggestion</strong> — "Based on similar jobs this usually costs $40-60" <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>AI job description helper</strong> — user starts typing and AI completes it <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>AI fraud detection</strong> — flags suspicious accounts automatically <span class="tag ty">You</span></div></div>
-      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>AI review summariser</strong> — "This worker has 47 reviews. Clients say they are punctual and professional" <span class="tag ty">You</span></div></div>
+    <div class="sec-hdr"><span class="sec-icon">🚀</span><div><div class="sec-title">MoTechCo growth — later</div><div class="sec-sub">When MO-WEBCO is earning $2,000+/month</div></div></div>
+    <div class="tasks">
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Open RBC business account properly</strong> — with MoTechCo certificate <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Incorporate MoTechCo</strong> — AMA $559, become legally separate from business, tax savings kick in <span class="tag tl">Legal</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Buy motechco.ca domain</strong> — only when building MoTechCo company homepage <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build motechco.ca company homepage</strong> — shows all MoTechCo products and your founder story <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Apply for Black Entrepreneurship Loan Fund</strong> — up to $250,000, canadabusiness.ca/BEP <span class="tag tl">Legal</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Apply for PrairiesCan BEP Fund</strong> — specifically for Black Alberta entrepreneurs, prairies.canada.ca <span class="tag tl">Legal</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Launch AI chatbot service as MoTechCo product</strong> — $200 setup + $75/month per client, add to all MO-WEBCO clients <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Launch staff scheduling SaaS</strong> — $50/month per business, build once sell to hundreds <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Register for GST when earning $30,000+/year</strong> — CRA requirement <span class="tag tl">Legal</span></div></div>
     </div>
   </div>
 </div>
 
-<!-- TECH TAB -->
-<div class="screen" id="tab-tech">
-  <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">⚙️</span><div><div class="sec-title">Tech stack</div><div class="sec-sub">Everything you're building with and why</div></div></div>
-    <div class="stack"><span class="stack-icon">🌐</span><div><div class="stack-name">HTML / CSS / JavaScript</div><div class="stack-desc">Frontend — you already know this ✅</div></div><span class="stack-cost">Free</span></div>
-    <div class="stack"><span class="stack-icon">🔥</span><div><div class="stack-name">Firebase Authentication</div><div class="stack-desc">Secure user login and signup — handles passwords and security automatically</div></div><span class="stack-cost">Free</span></div>
-    <div class="stack"><span class="stack-icon">🗄️</span><div><div class="stack-name">Oracle Database</div><div class="stack-desc">Stores all users, jobs, payments, reviews — you already know SQL from CPRG 250 ✅</div></div><span class="stack-cost">Free tier</span></div>
-    <div class="stack"><span class="stack-icon">🔗</span><div><div class="stack-name">Node.js + ORDS</div><div class="stack-desc">Backend server connecting Oracle to your website</div></div><span class="stack-cost">Free</span></div>
-    <div class="stack"><span class="stack-icon">💳</span><div><div class="stack-name">Stripe Connect</div><div class="stack-desc">Handles 30/70 payment split automatically — workers get paid directly</div></div><span class="stack-cost">2.9% + 30¢/transaction</span></div>
-    <div class="stack"><span class="stack-icon">☁️</span><div><div class="stack-name">Firebase Hosting</div><div class="stack-desc">Google infrastructure — scales automatically, no crashing under traffic</div></div><span class="stack-cost">Free to start</span></div>
-    <div class="stack"><span class="stack-icon">📱</span><div><div class="stack-name">React Native (Phase 2)</div><div class="stack-desc">Builds iOS and Android app at the same time from one codebase</div></div><span class="stack-cost">Free</span></div>
-    <div class="stack"><span class="stack-icon">🤖</span><div><div class="stack-name">Claude API (Phase 3)</div><div class="stack-desc">AI job matching, price suggestions, fraud detection, review summaries</div></div><span class="stack-cost">Pay per use</span></div>
+<!-- MO-WEBCO TAB -->
+<div class="screen" id="tab-mowebco">
+  <div class="alert green">
+    <strong>MO-WEBCO status:</strong> Live at www.mowebco.org · 33+ emails sent · 21 salons in call scripts · CRM app deployed · Sister making calls · 2 callbacks received · Google verified · Sitemap submitted
   </div>
 
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">🏗️</span><div><div class="sec-title">Architecture</div><div class="sec-sub">How everything connects</div></div></div>
-    <div style="background:var(--cr);border-radius:12px;padding:1.2rem;font-family:monospace;font-size:12px;color:var(--tm);line-height:2;">
-      User's phone/browser<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;↕<br>
-      Firebase Hosting (serves the website)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;↕<br>
-      Node.js backend (connects everything)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;↕<br>
-      ├── Oracle Database → stores all user data, jobs, payments, reviews<br>
-      ├── Stripe → handles all payments, 30/70 split, worker payouts<br>
-      ├── Firebase Auth → handles login, signup, password reset<br>
-      └── Claude API → AI matching, suggestions, fraud detection
+    <div class="sec-hdr"><span class="sec-icon">💅</span><div><div class="sec-title">MO-WEBCO — what's done</div><div class="sec-sub">Everything completed so far</div></div></div>
+    <div class="tasks">
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Website live at mowebco.org</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Domain purchased mowebco.org</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>HTTPS enforced</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Google Search Console verified</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Sitemap submitted</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Google My Business set up</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Nail salon portfolio sample built</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>CRM app built and deployed</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Call scripts app built — 21 salons</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Excel tracker built</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>33+ cold emails sent</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Quote template ready</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Pricing structure set</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Sister cold calling on commission</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Generic call script built</strong> ✅</div></div>
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Client intake form on website</strong> ✅</div></div>
     </div>
   </div>
 
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">📊</span><div><div class="sec-title">Oracle database tables</div><div class="sec-sub">Your CPRG 250 skills applied to a real product</div></div></div>
-    <div style="background:var(--cr);border-radius:12px;padding:1.2rem;font-family:monospace;font-size:11px;color:var(--tm);line-height:1.8;overflow-x:auto;">
-      -- Users table<br>
-      CREATE TABLE users (<br>
-      &nbsp;&nbsp;user_id &nbsp;&nbsp;&nbsp;NUMBER PRIMARY KEY,<br>
-      &nbsp;&nbsp;name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VARCHAR2(100) NOT NULL,<br>
-      &nbsp;&nbsp;email &nbsp;&nbsp;&nbsp;&nbsp;VARCHAR2(100) UNIQUE NOT NULL,<br>
-      &nbsp;&nbsp;user_type VARCHAR2(10), -- 'poster' or 'worker'<br>
-      &nbsp;&nbsp;rating &nbsp;&nbsp;&nbsp;NUMBER(3,2) DEFAULT 0,<br>
-      &nbsp;&nbsp;created_at DATE DEFAULT SYSDATE<br>
-      );<br><br>
-      -- Jobs table<br>
-      CREATE TABLE jobs (<br>
-      &nbsp;&nbsp;job_id &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NUMBER PRIMARY KEY,<br>
-      &nbsp;&nbsp;title &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VARCHAR2(200) NOT NULL,<br>
-      &nbsp;&nbsp;description CLOB,<br>
-      &nbsp;&nbsp;budget &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NUMBER(10,2),<br>
-      &nbsp;&nbsp;category &nbsp;&nbsp;&nbsp;VARCHAR2(50),<br>
-      &nbsp;&nbsp;location &nbsp;&nbsp;&nbsp;VARCHAR2(200),<br>
-      &nbsp;&nbsp;status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VARCHAR2(20) DEFAULT 'open',<br>
-      &nbsp;&nbsp;posted_by &nbsp;&nbsp;NUMBER REFERENCES users(user_id),<br>
-      &nbsp;&nbsp;created_at &nbsp;DATE DEFAULT SYSDATE<br>
-      );<br><br>
-      -- Applications table<br>
-      CREATE TABLE applications (<br>
-      &nbsp;&nbsp;app_id &nbsp;&nbsp;&nbsp;&nbsp;NUMBER PRIMARY KEY,<br>
-      &nbsp;&nbsp;job_id &nbsp;&nbsp;&nbsp;&nbsp;NUMBER REFERENCES jobs(job_id),<br>
-      &nbsp;&nbsp;worker_id &nbsp;NUMBER REFERENCES users(user_id),<br>
-      &nbsp;&nbsp;message &nbsp;&nbsp;&nbsp;CLOB,<br>
-      &nbsp;&nbsp;price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NUMBER(10,2),<br>
-      &nbsp;&nbsp;status &nbsp;&nbsp;&nbsp;&nbsp;VARCHAR2(20) DEFAULT 'pending',<br>
-      &nbsp;&nbsp;created_at DATE DEFAULT SYSDATE<br>
-      );<br><br>
-      -- Payments table<br>
-      CREATE TABLE payments (<br>
-      &nbsp;&nbsp;payment_id &nbsp;&nbsp;NUMBER PRIMARY KEY,<br>
-      &nbsp;&nbsp;job_id &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NUMBER REFERENCES jobs(job_id),<br>
-      &nbsp;&nbsp;amount &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NUMBER(10,2),<br>
-      &nbsp;&nbsp;platform_cut NUMBER(10,2), -- 30%<br>
-      &nbsp;&nbsp;worker_pay &nbsp;&nbsp;NUMBER(10,2), -- 70%<br>
-      &nbsp;&nbsp;stripe_id &nbsp;&nbsp;&nbsp;VARCHAR2(100),<br>
-      &nbsp;&nbsp;status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VARCHAR2(20),<br>
-      &nbsp;&nbsp;created_at &nbsp;&nbsp;DATE DEFAULT SYSDATE<br>
-      );<br><br>
-      -- Reviews table<br>
-      CREATE TABLE reviews (<br>
-      &nbsp;&nbsp;review_id &nbsp;NUMBER PRIMARY KEY,<br>
-      &nbsp;&nbsp;job_id &nbsp;&nbsp;&nbsp;&nbsp;NUMBER REFERENCES jobs(job_id),<br>
-      &nbsp;&nbsp;reviewer &nbsp;&nbsp;NUMBER REFERENCES users(user_id),<br>
-      &nbsp;&nbsp;reviewee &nbsp;&nbsp;NUMBER REFERENCES users(user_id),<br>
-      &nbsp;&nbsp;rating &nbsp;&nbsp;&nbsp;&nbsp;NUMBER(1) CHECK (rating BETWEEN 1 AND 5),<br>
-      &nbsp;&nbsp;comment &nbsp;&nbsp;&nbsp;CLOB,<br>
-      &nbsp;&nbsp;created_at DATE DEFAULT SYSDATE<br>
-      );
+    <div class="sec-hdr"><span class="sec-icon">📋</span><div><div class="sec-title">MO-WEBCO — still to do</div><div class="sec-sub">Keep pushing every day</div></div></div>
+    <div class="tasks">
+      <div class="task pri urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Send follow up emails to all 33 original contacts</strong> — 4+ days have passed, this is where first reply comes from</div></div>
+      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Send 10 new cold emails every day</strong> — non negotiable forever</div></div>
+      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Upload updated CRM to GitHub MOWEBCO-App repo</strong> — shared storage version</div></div>
+      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Upload updated call scripts to GitHub MOWEBCO-App repo</strong> — 21 salons version</div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build hair salon portfolio sample</strong> — purple premium theme, with pricing</div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add testimonials section to mowebco.org</strong> — once first client gives review</div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Create @mowebco on Instagram</strong> — before and after posts, salon website content</div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Post on Kijiji Calgary</strong> — Services → Web Design, free ad, refresh weekly</div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Start targeting trades businesses</strong> — plumbers, electricians, HVAC, bigger budgets than salons</div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add AI chatbot upsell to all clients</strong> — $200 setup + $75/month, Claude API already built in CRM</div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Raise prices after 3 clients</strong> — Starter $600, Standard $1,200, Premium $2,500</div></div>
     </div>
   </div>
 </div>
 
-<!-- MONEY TAB -->
-<div class="screen" id="tab-money">
+<!-- URBAN HELPHUB TAB -->
+<div class="screen" id="tab-helphub">
+  <div class="alert">
+    <strong>Status:</strong> Planning phase · No partner confirmed yet · Domain not purchased yet · Build starts after MO-WEBCO gets first client
+  </div>
+
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">💰</span><div><div class="sec-title">Revenue model</div><div class="sec-sub">How Urban HelpHub makes money</div></div></div>
-    <div class="price-grid">
-      <div class="pcard">
-        <div class="pcard-title">Platform fees</div>
-        <div class="prow"><span class="plbl">Platform cut per job</span><span class="pval p">30%</span></div>
-        <div class="prow"><span class="plbl">Worker keeps</span><span class="pval g">70%</span></div>
-        <div class="prow"><span class="plbl">Stripe fee</span><span class="pval r">2.9% + 30¢</span></div>
-        <div class="prow"><span class="plbl">Sign up fee</span><span class="pval g">Free</span></div>
-        <div class="prow"><span class="plbl">Job listing fee</span><span class="pval g">Free</span></div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-title">Startup costs</div>
-        <div class="prow"><span class="plbl">urbanhelphub.com domain</span><span class="pval">C$6.79</span></div>
-        <div class="prow"><span class="plbl">Firebase hosting</span><span class="pval g">Free</span></div>
-        <div class="prow"><span class="plbl">Oracle database</span><span class="pval g">Free tier</span></div>
-        <div class="prow"><span class="plbl">Stripe setup</span><span class="pval g">Free</span></div>
-        <div class="prow"><span class="plbl">App Store (later)</span><span class="pval">$99/yr</span></div>
-        <div class="prow"><span class="plbl">Google Play (later)</span><span class="pval">$25 once</span></div>
-        <div class="prow"><span class="plbl"><strong>Total to launch</strong></span><span class="pval p"><strong>~C$7</strong></span></div>
-      </div>
-    </div>
-    <div class="calc">
-      <div class="calc-title">Revenue projections</div>
-      <div class="crow"><span class="clbl">Average job value</span><span>$60</span></div>
-      <div class="crow"><span class="clbl">Platform keeps 30%</span><span>$18 per job</span></div>
-      <div class="crow"><span class="clbl">Stripe fee (~3%)</span><span>-$2.10</span></div>
-      <div class="crow"><span class="clbl">Net per job</span><span>~$15.90</span></div>
-      <div style="height:1px;background:rgba(255,255,255,0.15);margin:8px 0;"></div>
-      <div class="crow"><span class="clbl">100 jobs/month</span><span>$1,590/month</span></div>
-      <div class="crow"><span class="clbl">500 jobs/month</span><span>$7,950/month</span></div>
-      <div class="crow"><span class="clbl">1,000 jobs/month</span><span>$15,900/month</span></div>
-      <div style="height:1px;background:rgba(255,255,255,0.15);margin:8px 0;"></div>
-      <div class="crow"><span class="clbl">Your 20% equity (Option 2) at 1,000 jobs</span><span>$3,180/month 🎉</span></div>
-      <div class="crow"><span class="clbl">Your 40% equity (Option 3) at 1,000 jobs</span><span>$6,360/month 🚀</span></div>
+    <div class="sec-hdr"><span class="sec-icon">🤝</span><div><div class="sec-title">Partner decision</div><div class="sec-sub">Decide this week</div></div></div>
+    <div class="tasks">
+      <div class="task pri urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Decide on partner situation</strong> — original friend not confirming, all-in friend available, or go solo <span class="tag tl">Urgent</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>If going with all-in friend</strong> — pitch him the full vision, same proposal email <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>If going solo</strong> — you own 100%, register Urban HelpHub as trade name under MoTechCo for $59 <span class="tag tl">Legal</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Get any partnership agreement in writing</strong> — email confirmation minimum before building anything <span class="tag tl">Legal</span></div></div>
     </div>
   </div>
 
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">🤝</span><div><div class="sec-title">Your deal options</div><div class="sec-sub">Waiting for his reply</div></div></div>
-    <div class="pcard" style="margin-bottom:10px;">
-      <div class="pcard-title">Option 1 — Build fee only</div>
-      <div class="prow"><span class="plbl">Build fee</span><span class="pval p">$10,000</span></div>
-      <div class="prow"><span class="plbl">Deposit to start</span><span class="pval">$5,000</span></div>
-      <div class="prow"><span class="plbl">Final payment on launch</span><span class="pval">$5,000</span></div>
-      <div class="prow"><span class="plbl">Your equity</span><span class="pval r">0%</span></div>
-      <div class="prow"><span class="plbl">His ownership</span><span class="pval g">100%</span></div>
-    </div>
-    <div class="pcard" style="margin-bottom:10px;">
-      <div class="pcard-title">Option 2 — Reduced fee + equity</div>
-      <div class="prow"><span class="plbl">Build fee</span><span class="pval p">$5,000</span></div>
-      <div class="prow"><span class="plbl">Deposit to start</span><span class="pval">$2,500</span></div>
-      <div class="prow"><span class="plbl">Final payment on launch</span><span class="pval">$2,500</span></div>
-      <div class="prow"><span class="plbl">Your equity</span><span class="pval p">20%</span></div>
-      <div class="prow"><span class="plbl">His ownership</span><span class="pval">80%</span></div>
-    </div>
-    <div class="pcard">
-      <div class="pcard-title">Option 3 — Full co-founder</div>
-      <div class="prow"><span class="plbl">Build fee</span><span class="pval g">$0</span></div>
-      <div class="prow"><span class="plbl">Your equity</span><span class="pval p">40%</span></div>
-      <div class="prow"><span class="plbl">His equity</span><span class="pval">55%</span></div>
-      <div class="prow"><span class="plbl">Dad equity</span><span class="pval">5%</span></div>
-      <div class="prow"><span class="plbl">Alberta corporation</span><span class="pval">~$450</span></div>
+    <div class="sec-hdr"><span class="sec-icon">🏗️</span><div><div class="sec-title">Build phases</div><div class="sec-sub">In order — do not skip steps</div></div></div>
+    <div class="tasks">
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 0 — Buy urbanhelphub.com</strong> — C$6.79 on Namecheap with NEWCOM679 <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 0 — Build coming soon page</strong> — email waitlist, target 100 signups before launch <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 1 — Learn Firebase</strong> — YouTube tutorials, 1-2 weeks <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 1 — Design Oracle database tables</strong> — Users, Jobs, Applications, Payments, Reviews <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 1 — Build user signup and login</strong> — Firebase Auth + Oracle storage <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 2 — Build job posting and browsing</strong> — post, browse, search, filter by category <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 2 — Build application system</strong> — apply, accept, reject, notify <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 3 — Stripe payment integration</strong> — 30/70 split automatic, worker payouts <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 3 — Reviews and ratings</strong> — both parties rate after completion <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 3 — Admin dashboard</strong> — manage users, jobs, revenue <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 4 — Beta launch Calgary</strong> — Reddit, Kijiji, Facebook, university campuses <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 5 — Mobile app</strong> — React Native, iOS and Android <span class="tag th">HelpHub</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Phase 6 — Canada expansion</strong> — Edmonton, Vancouver, Toronto, then all cities <span class="tag th">HelpHub</span></div></div>
     </div>
   </div>
 </div>
 
-<!-- PROMO TAB -->
-<div class="screen" id="tab-promo">
+<!-- MOTECHCO TAB -->
+<div class="screen" id="tab-motechco">
+  <div class="alert green">
+    <strong>MoTechCo status:</strong> Registered as sole proprietorship in Alberta · June 15 2026 · Owner: Morolake Oniye · Certificate pending by email
+  </div>
+
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">📣</span><div><div class="sec-title">Full promotion plan</div><div class="sec-sub">How you drive users to Urban HelpHub</div></div></div>
-
-    <div class="week">
-      <div class="week-hdr"><span class="wbadge urgent">Before launch</span><span class="wtitle">Build anticipation</span></div>
-      <div class="promo-channel">
-        <div class="promo-title">🌐 Coming soon page</div>
-        <div class="promo-items">
-          <div class="promo-item">Simple page at urbanhelphub.com with email capture form</div>
-          <div class="promo-item">Target 100 emails before launch day</div>
-          <div class="promo-item">Friend posts link in his Facebook group</div>
-        </div>
-      </div>
-      <div class="promo-channel">
-        <div class="promo-title">📘 Facebook — friend's existing community</div>
-        <div class="promo-items">
-          <div class="promo-item">"Remember the odd jobs group from COVID? Something way bigger is coming"</div>
-          <div class="promo-item">This alone could bring 100-200 early users for free</div>
-          <div class="promo-item">His community already trusts him — biggest advantage you have</div>
-        </div>
-      </div>
-      <div class="promo-channel">
-        <div class="promo-title">🔍 SEO — write 3 blog posts before launch</div>
-        <div class="promo-items">
-          <div class="promo-item">"10 odd jobs you can do in Calgary to make extra money in 2026"</div>
-          <div class="promo-item">"How to find reliable help for errands in Calgary"</div>
-          <div class="promo-item">"Best side hustles in Calgary 2026 — make money on your own schedule"</div>
-          <div class="promo-item">Target keywords: odd jobs Calgary, errands Calgary, side hustle Calgary, make money Calgary</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="week">
-      <div class="week-hdr"><span class="wbadge">Launch week</span><span class="wtitle">Maximum noise in 7 days</span></div>
-      <div class="promo-channel">
-        <div class="promo-title">📧 Email waitlist</div>
-        <div class="promo-items">
-          <div class="promo-item">Email everyone who signed up on coming soon page on launch day</div>
-          <div class="promo-item">"You're first in — Urban HelpHub is live!"</div>
-        </div>
-      </div>
-      <div class="promo-channel">
-        <div class="promo-title">📘 Calgary Facebook groups</div>
-        <div class="promo-items">
-          <div class="promo-item">Calgary Buy Nothing groups</div>
-          <div class="promo-item">YYC Marketplace</div>
-          <div class="promo-item">Calgary Community Board</div>
-          <div class="promo-item">Calgary Events and Activities</div>
-        </div>
-      </div>
-      <div class="promo-channel">
-        <div class="promo-title">🤖 Reddit r/Calgary</div>
-        <div class="promo-items">
-          <div class="promo-item">"We built a platform for Calgary odd jobs — looking for beta testers, completely free to sign up"</div>
-          <div class="promo-item">Calgarians love supporting local — this post will do well</div>
-        </div>
-      </div>
-      <div class="promo-channel">
-        <div class="promo-title">🛒 Kijiji Calgary</div>
-        <div class="promo-items">
-          <div class="promo-item">Jobs section: "Find odd jobs in Calgary — sign up free at urbanhelphub.com"</div>
-          <div class="promo-item">Services section: "Post your odd job and get it done today"</div>
-          <div class="promo-item">Refresh listing every 2 days to stay at top</div>
-        </div>
-      </div>
-      <div class="promo-channel">
-        <div class="promo-title">🏘️ Nextdoor Calgary</div>
-        <div class="promo-items">
-          <div class="promo-item">Neighbourhood app — perfect for local odd jobs</div>
-          <div class="promo-item">Post in multiple Calgary neighbourhoods</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="week">
-      <div class="week-hdr"><span class="wbadge">Social media</span><span class="wtitle">Content that builds trust and goes viral</span></div>
-      <div class="promo-channel">
-        <div class="promo-title">📸 Instagram content pillars</div>
-        <div class="promo-items">
-          <div class="promo-item">Success stories — "John made $300 this week doing odd jobs through Urban HelpHub"</div>
-          <div class="promo-item">Job of the week — "This week's most interesting job posted"</div>
-          <div class="promo-item">Tips — "5 odd jobs in Calgary that pay surprisingly well"</div>
-          <div class="promo-item">Post 3x per week minimum</div>
-          <div class="promo-item">Hashtags: #calgaryoddjobs #yycerrands #calgaryfreelance #yycjobs #sidehustle #makemoney</div>
-        </div>
-      </div>
-      <div class="promo-channel">
-        <div class="promo-title">🎵 TikTok — viral potential</div>
-        <div class="promo-items">
-          <div class="promo-item">"I tried making money doing odd jobs for a week — here's what happened"</div>
-          <div class="promo-item">"How Urban HelpHub works in 60 seconds"</div>
-          <div class="promo-item">"I made $X doing odd jobs in Calgary this week"</div>
-          <div class="promo-item">One viral video can bring thousands of signups</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="week">
-      <div class="week-hdr"><span class="wbadge">Your MO-WEBCO skills applied</span><span class="wtitle">Cold email campaign for HelpHub</span></div>
-      <div class="promo-channel">
-        <div class="promo-title">📧 Target Calgary businesses who need regular help</div>
-        <div class="promo-items">
-          <div class="promo-item">Airbnb hosts — constantly need cleaners between guests</div>
-          <div class="promo-item">Property management companies — always need odd jobs done</div>
-          <div class="promo-item">Small restaurants needing delivery or errands</div>
-          <div class="promo-item">Offices needing errands run</div>
-          <div class="promo-item">Real estate agents needing property cleanups</div>
-          <div class="promo-item">Send 10 emails per day — same system you built for MO-WEBCO ✅</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="week">
-      <div class="week-hdr"><span class="wbadge">University campaign</span><span class="wtitle">Students need money — perfect workers</span></div>
-      <div class="promo-channel">
-        <div class="promo-title">🎓 Campus outreach</div>
-        <div class="promo-items">
-          <div class="promo-item">Post flyers at SAIT, UCalgary, Mount Royal University</div>
-          <div class="promo-item">"Make money doing odd jobs around Calgary on your own schedule"</div>
-          <div class="promo-item">Join student Facebook groups and post there</div>
-          <div class="promo-item">Students are your best early workers</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="week">
-      <div class="week-hdr"><span class="wbadge">Technical marketing</span><span class="wtitle">What only you can do as the developer</span></div>
-      <div class="promo-channel">
-        <div class="promo-title">🔧 Your developer advantage</div>
-        <div class="promo-items">
-          <div class="promo-item">Google Search Console and sitemap submission ✅</div>
-          <div class="promo-item">Google Analytics — track every user source</div>
-          <div class="promo-item">Open Graph meta tags — beautiful link previews on Facebook and WhatsApp</div>
-          <div class="promo-item">Speed optimisation — fast sites rank higher and convert better</div>
-          <div class="promo-item">Built-in referral system — invite a friend, both get credit</div>
-          <div class="promo-item">Push notifications — brings users back daily</div>
-          <div class="promo-item">Weekly email newsletter — "Top jobs near you this week"</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="week">
-      <div class="week-hdr"><span class="wbadge">Month 2+</span><span class="wtitle">Paid campaigns — only when you have users</span></div>
-      <div class="promo-channel">
-        <div class="promo-title">💸 Paid ads</div>
-        <div class="promo-items">
-          <div class="promo-item">Facebook/Instagram ads — $10/day, two campaigns: worker side + poster side</div>
-          <div class="promo-item">Target: Calgary residents 18-45, interests: side hustle, home services, extra income</div>
-          <div class="promo-item">Google ads — $15/day, keywords: odd jobs Calgary, errands Calgary, handyman near me Calgary</div>
-          <div class="promo-item">Only start paid ads when platform has 50+ active users and first jobs completing</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="week">
-      <div class="week-hdr"><span class="wbadge">The growth loop</span><span class="wtitle">When it starts working by itself</span></div>
-      <div class="promo-channel">
-        <div class="promo-title">🔄 Network effect</div>
-        <div class="promo-items">
-          <div class="promo-item">More workers → jobs done fast → posters happy → more jobs posted → more workers needed → repeat</div>
-          <div class="promo-item">CRITICAL: Recruit 50 workers BEFORE launch — first impression is everything</div>
-          <div class="promo-item">Screenshot every success story — real stories build trust fast</div>
-          <div class="promo-item">Feature top workers monthly — they share it, their network signs up, free growth</div>
-        </div>
-      </div>
+    <div class="sec-hdr"><span class="sec-icon">🏢</span><div><div class="sec-title">MoTechCo structure</div><div class="sec-sub">Your umbrella company</div></div></div>
+    <div class="tasks">
+      <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Register MoTechCo as sole proprietorship</strong> — AMA $59 ✅ DONE June 15 2026</div></div>
+      <div class="task pri urgent" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Receive and save MoTechCo certificate</strong> — check email, save PDF <span class="tag ty">You</span></div></div>
+      <div class="task pri" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Open RBC Digital Choice Business Account</strong> — $6/month, upload certificate, rbc.com/business <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Claim Servus $300 cashback via AMA</strong> — ama.ab.ca/business, open Servus Business Account <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add MoTechCo to mowebco.org footer</strong> — "A MoTechCo company © 2026" <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Update email signature with MoTechCo</strong> — Founder · MoTechCo above MO-WEBCO <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Use MoTechCo name on all invoices</strong> — "MoTechCo operating as MO-WEBCO" <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Join Calgary Black Chamber of Commerce</strong> — calgaryblackchamber.com, free <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Apply to LiftOff program</strong> — free 12 month coaching for Black entrepreneurs <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Contact AWE — Alberta Women Entrepreneurs</strong> — awebusiness.com, free consultation <span class="tag ty">You</span></div></div>
     </div>
   </div>
-</div>
 
-<!-- LEGAL TAB -->
-<div class="screen" id="tab-legal">
   <div class="sec">
-    <div class="sec-hdr"><span class="sec-icon">⚖️</span><div><div class="sec-title">Legal requirements</div><div class="sec-sub">Protect yourself before anything else</div></div></div>
-
-    <div class="legal urg">
-      <div class="legal-title urg">🚨 URGENT — Get written agreement NOW</div>
-      <div class="legal-desc">Before you write a single line of code get your deal confirmed in writing. Email reply from your friend minimum. Your dad can help draft something more formal. This is the most important thing on this entire list.</div>
-    </div>
-
-    <div class="legal urg">
-      <div class="legal-title urg">🚨 URGENT — Terms of Service and Privacy Policy before launch</div>
-      <div class="legal-desc">Use termsfeed.com or privacypolicies.com to generate these for free. Your dad reviews them. Must be live on the platform before a single user signs up. Protects you if anything goes wrong.</div>
-    </div>
-
-    <div class="legal">
-      <div class="legal-title">Register the business in Alberta</div>
-      <div class="legal-desc">Once you start making real money register through Alberta Business Registry (alberta.ca). Sole proprietorship (~$60) or Corporation (~$450). Your dad advises which is best. Don't do this until you have users and revenue.</div>
-    </div>
-
-    <div class="legal">
-      <div class="legal-title">Shareholders agreement (if Option 3)</div>
-      <div class="legal-desc">If you go co-founder route — proper shareholders agreement before starting. Covers equity percentages, vesting schedule, decision making authority, what happens if someone leaves. SAIT legal clinic can help for free.</div>
-    </div>
-
-    <div class="legal">
-      <div class="legal-title">Vesting schedule</div>
-      <div class="legal-desc">Shares earned over 2 years — protects everyone from someone leaving early and keeping equity for doing nothing. Standard: 6 month cliff then monthly vesting. Your dad knows this well.</div>
-    </div>
-
-    <div class="legal">
-      <div class="legal-title">GST registration</div>
-      <div class="legal-desc">In Canada you must register for GST once you earn over $30,000/year. Under that it's optional. Keep this in mind as platform grows.</div>
-    </div>
-
-    <div class="legal">
-      <div class="legal-title">PIPEDA compliance — Canadian data privacy</div>
-      <div class="legal-desc">Canada's privacy law requires protecting user data, clear privacy policy, and never selling user information. Firebase and Oracle have strong security built in. Privacy policy page must be live before launch.</div>
-    </div>
-
-    <div class="legal">
-      <div class="legal-title">Payment liability</div>
-      <div class="legal-desc">Stripe handles payment security — you never store card numbers. Terms of Service must state platform is not responsible for disputes between posters and workers. Add a dispute resolution process.</div>
-    </div>
-
-    <div class="legal">
-      <div class="legal-title">Worker classification</div>
-      <div class="legal-desc">Workers are independent contractors, not employees. Make this clear in Terms of Service. They are responsible for their own taxes on earnings. This is how TaskRabbit, Uber and Fiverr all operate.</div>
-    </div>
-
-    <div class="legal">
-      <div class="legal-title">Free legal help in Calgary</div>
-      <div class="legal-desc">SAIT Legal Clinic (free for students) · University of Calgary free legal aid · Community Legal Clinics Alberta at legalaid.ab.ca · Use these before paying a lawyer.</div>
+    <div class="sec-hdr"><span class="sec-icon">📈</span><div><div class="sec-title">MoTechCo — when earning $2,000+/month</div><div class="sec-sub">Next level steps</div></div></div>
+    <div class="tasks">
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Incorporate MoTechCo</strong> — AMA $559, become legally separate from business, personal assets protected <span class="tag tl">Legal</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Open business credit card</strong> — RBC Avion Business Visa, earn points on all spending <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Buy motechco.ca domain</strong> — only when building company homepage <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Build motechco.ca company homepage</strong> — founder story, all products, vision for Canada <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Register for GST with CRA</strong> — required when earning $30,000+/year <span class="tag tl">Legal</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Apply for Black Entrepreneurship Loan Fund</strong> — up to $250,000, canadabusiness.ca/BEP <span class="tag tl">Legal</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Apply for PrairiesCan BEP Fund</strong> — $15M specifically for Black Alberta entrepreneurs <span class="tag tl">Legal</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Hire your sister properly</strong> — part time sales role, commission structure, pay through business account <span class="tag ty">You</span></div></div>
+      <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Get professional liability insurance</strong> — E&O insurance ~$50-100/month, protects against client disputes <span class="tag tl">Legal</span></div></div>
     </div>
   </div>
 </div>
 
 </div>
 
-<div class="footer">Urban HelpHub · Built by Morolake Oniye · CTO & Co-founder · 2026</div>
+<div class="footer">MoTechCo · Registered June 15 2026 · Calgary Alberta · Founder Morolake Oniye 🦋</div>
 
 <script>
-var ticked = JSON.parse(localStorage.getItem('uh-ticked') || '[]');
+var ticked = JSON.parse(localStorage.getItem('motechco-ticked') || '[]');
 
 function switchTab(name, el) {
   document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('on'); });
   document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('on'); });
   document.getElementById('tab-'+name).classList.add('on');
   el.classList.add('on');
+  updateProgress();
 }
 
 function tick(el) {
   var chk = el.querySelector('.chk');
-  var txt = el.querySelector('.task-txt').textContent.trim().substring(0,30);
+  var txt = el.querySelector('.task-txt');
   chk.classList.toggle('ticked');
-  var idx = ticked.indexOf(txt);
+  txt.classList.toggle('struck');
+  el.classList.toggle('done-task');
+  var key = txt.textContent.trim().substring(0,40);
+  var idx = ticked.indexOf(key);
   if(idx > -1) ticked.splice(idx, 1);
-  else ticked.push(txt);
-  localStorage.setItem('uh-ticked', JSON.stringify(ticked));
+  else ticked.push(key);
+  localStorage.setItem('motechco-ticked', JSON.stringify(ticked));
   updateProgress();
 }
 
@@ -716,12 +361,15 @@ function updateProgress() {
   document.getElementById('prog-lbl').textContent = pct + '%';
 }
 
-// Restore ticked state
 window.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.task').forEach(function(el) {
-    var txt = el.querySelector('.task-txt').textContent.trim().substring(0,30);
-    if(ticked.indexOf(txt) > -1) {
+    var txt = el.querySelector('.task-txt');
+    if(!txt) return;
+    var key = txt.textContent.trim().substring(0,40);
+    if(ticked.indexOf(key) > -1) {
       el.querySelector('.chk').classList.add('ticked');
+      txt.classList.add('struck');
+      el.classList.add('done-task');
     }
   });
   updateProgress();
