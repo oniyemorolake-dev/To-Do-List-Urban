@@ -83,8 +83,11 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
 <div class="tabs">
   <div class="tab on" onclick="switchTab('todo',this)">📋 Master Todo</div>
   <div class="tab" onclick="switchTab('mowebco',this)">💅 MO-WEBCO</div>
-  <div class="tab" onclick="switchTab('quickgigs',this)">🏙️ QuickGigs</div>
+  <div class="tab" onclick="switchTab('quickgigs',this)">⚡ QuickGigs</div>
   <div class="tab" onclick="switchTab('motechco',this)">🏢 MoTechCo</div>
+  <div class="tab" onclick="switchTab('future',this)">🔮 Future Plans</div>
+  <div class="tab" onclick="switchTab('remember',this)">🧠 Don't Forget</div>
+  <div class="tab" onclick="switchTab('beta',this)">🚀 Beta Plan</div>
 </div>
 
 <div class="container">
@@ -106,6 +109,10 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
 
   <div class="alert">
     <strong>Non negotiable every single day:</strong> Send 10 MO-WEBCO cold emails every morning. MO-WEBCO pays your bills now. QuickGigs is your future. Never stop both.
+  </div>
+
+  <div class="alert green">
+    <strong>QuickGigs decisions locked in 🔒</strong> — Hybrid model ✅ · 3 task types ✅ · 20% fee ✅ · Canada wide ✅ · Escrow via Stripe ✅ · No adult content ✅ · 18+ (16-17 with parent) ✅ · Minimum task price $20 ✅ · You absorb Stripe fees ✅
   </div>
 
   <!-- TONIGHT -->
@@ -327,7 +334,186 @@ html,body{min-height:100%;background:var(--p);font-family:'DM Sans',sans-serif;c
 
 </div>
 
-<div class="footer">MoTechCo · Registered June 15 2026 · Calgary Alberta · Founder Morolake Oniye 🦋</div>
+<div class="footer">MoTechCo · Registered June 15 2026 · Calgary Alberta · Founder Morolake Oniye 🦋
+<!-- FUTURE PLANS TAB -->
+<div class="screen" id="tab-future">
+  <div class="sec">
+    <div class="sec-hdr"><span class="sec-icon">🔮</span><div><div class="sec-title">Future features — build later</div><div class="sec-sub">Don't build these now — focus on MVP first</div></div></div>
+
+    <div class="week">
+      <div class="week-hdr"><span class="wbadge">Phase 2 features</span><span class="wtitle">After launch and first users</span></div>
+      <div class="tasks">
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>GPS live tracking</strong> — poster sees worker moving on map like Uber for Quick tasks</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Real time notifications</strong> — push notifications when task is accepted, worker nearby, task complete</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>In-app messaging</strong> — secure chat between poster and worker with contact info hidden</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Worker subscription — $9.99/month</strong> — priority matching, lower fees 15% not 20%, boosted visibility</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Boosted listings — $2-10</strong> — workers and posters pay to appear first in results</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Recurring task mode 🔄</strong> — nanny every weekday, cleaner every week, tutor twice a week — earns platform fees repeatedly</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Referral system</strong> — users invite friends, both get credit — builds trust and grows user base faster</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Verified badge system</strong> — workers pay $5-15 for ID verification, shows checkmark, gets more jobs</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>16-17 year old accounts</strong> — parent creates account, parent receives payments, minor does tasks</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Business accounts</strong> — Airbnb hosts, restaurants, offices hire workers regularly through B2B tier</div></div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hdr"><span class="wbadge">Phase 3 features</span><span class="wtitle">Scale phase — when earning well</span></div>
+      <div class="tasks">
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Mobile app — React Native</strong> — iOS and Android, much better user experience than mobile web</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>AI price suggestions</strong> — "Similar tasks in Calgary cost $35-55" shown automatically when posting</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>AI task matching</strong> — platform suggests best workers for each task based on reviews and skills</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>AI message scanning</strong> — auto detects and blocks phone numbers emails and social handles in chat</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Background checks</strong> — optional paid service for workers doing sensitive tasks like childcare</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Insurance partnership</strong> — partner with insurance company to offer workers coverage on platform</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>In-app training courses</strong> — workers learn new skills and get certified through QuickGigs</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>US expansion</strong> — position as Canadian alternative then expand south</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DONT FORGET TAB -->
+<div class="screen" id="tab-remember">
+  <div class="sec">
+    <div class="sec-hdr"><span class="sec-icon">🧠</span><div><div class="sec-title">Things to remember</div><div class="sec-sub">Important decisions and considerations — don't forget these!</div></div></div>
+
+    <div class="week">
+      <div class="week-hdr"><span class="wbadge">Platform decisions confirmed</span><span class="wtitle">Already decided — don't change without good reason</span></div>
+      <div class="tasks">
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Platform name → QuickGigs</strong> ✅</div></div>
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Hybrid model → Quick mode (real time) + Standard mode (scheduled)</strong> ✅</div></div>
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Three task types → ⚡ Quick / 📋 Standard / 🔄 Recurring</strong> ✅</div></div>
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Platform fee → 20% (subscribers pay 15%, top rated pay 12%)</strong> ✅</div></div>
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>You absorb Stripe fees (2.9% + 30¢) — cleaner pricing for users</strong> ✅</div></div>
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Negotiation system → poster sets budget, workers bid, poster picks</strong> ✅</div></div>
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Signup roles → I need help / I want to earn / I am both</strong> ✅</div></div>
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Age limit → 18+ standard / 16-17 with parent account</strong> ✅</div></div>
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Canada wide from day one — marketing starts in Calgary not platform</strong> ✅</div></div>
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>No adult content — hard ban, instant permanent ban if violated</strong> ✅</div></div>
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Escrow through Stripe Connect — money held until task confirmed complete</strong> ✅</div></div>
+        <div class="task done-task" onclick="tick(this)"><div class="chk ticked"></div><div class="task-txt struck"><strong>Payment MUST go through platform — no cash, copy Uber model</strong> ✅</div></div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hdr"><span class="wbadge urgent">Legal things to sort before launch</span><span class="wtitle">Don't launch without these</span></div>
+      <div class="tasks">
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Visit SAIT legal clinic</strong> — ask all 14 questions written in master plan about platform liability</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Write Terms of Service</strong> — workers are independent contractors not employees, no liability for injuries</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Write Privacy Policy</strong> — how you collect and use user data, required by law</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add age confirmation on signup</strong> — "I confirm I am 18+ or a parent creating account for 16-17 year old"</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Research WCB requirements</strong> — Workers Compensation Board, how does it apply to gig workers on your platform?</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Add liability disclaimer</strong> — workers are independent contractors, QuickGigs is not responsible for injuries</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>GST registration</strong> — only needed when earning $30,000+ per year, check when approaching that threshold</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Research trademark for QuickGigs name</strong> — protect your brand before someone else takes it</div></div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hdr"><span class="wbadge">Things that could trip you up</span><span class="wtitle">Be careful about these</span></div>
+      <div class="tasks">
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Stripe requires users to be 18+</strong> — that's why 16-17 year olds need parent account with parent's payment method</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Oracle reserved words</strong> — don't use MODE (use task_mode), COMMENT (use review_comment) as column names</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Formspree limit is 50/month</strong> — create new form when approaching limit OR upgrade to paid plan</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Reddit karma required</strong> — build karma by commenting before posting in r/Calgary and r/Edmonton</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Don't promise things you can't deliver yet</strong> — say "coming soon" not "available now" in all promotions</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Don't collect real payments yet</strong> — no Stripe integration until platform is actually built and tested</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>No adult content categories</strong> — strict ban, could get Stripe account terminated and platform shut down</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Vetting workers is important</strong> — referral system + reviews + ID verification builds trust over time</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>People will try to pay in cash</strong> — payment must go through platform BEFORE task starts, no exceptions</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>People will try to go off platform</strong> — hide contact details, AI scan messages, warn then ban</div></div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hdr"><span class="wbadge">Categories decided</span><span class="wtitle">What tasks are allowed on QuickGigs</span></div>
+      <div class="tasks">
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>🏠 Home and Property</strong> — cleaning, lawn mowing, handyman, painting, furniture assembly, moving, decluttering, pressure washing</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>🚗 Errands and Delivery</strong> — grocery runs, prescription pickup, package delivery, airport pickup, shopping assistance</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>👶 Care and Assistance</strong> — babysitting, childcare, elder care, pet sitting, dog walking, pet grooming</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>💻 Tech and Admin</strong> — computer help, phone repair, data entry, document typing, social media help</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>🎓 Lessons and Tutoring</strong> — academic tutoring, language lessons, music lessons, cooking lessons, fitness training</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>💇 Beauty and Personal</strong> — hair braiding, makeup, nail care, photography, event styling</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>🍳 Food and Cooking</strong> — meal prep, catering small events, baking, grocery shopping</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>🚚 Moving and Heavy Lifting</strong> — full home moves, single item moves, storage help, junk removal</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>🎉 Events and Entertainment</strong> — event setup, photography, videography, DJ services, event planning</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>🔧 Skilled Trades</strong> — minor plumbing, minor electrical, carpentry, small welding jobs</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>📦 Other</strong> — anything legitimate that doesn't fit above categories</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>❌ BANNED categories</strong> — anything sexual, adult content, illegal services, anything dangerous, alcohol related for minors</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BETA PLAN TAB -->
+<div class="screen" id="tab-beta">
+  <div class="sec">
+    <div class="sec-hdr"><span class="sec-icon">🚀</span><div><div class="sec-title">Beta launch plan</div><div class="sec-sub">How to go from coming soon to real platform</div></div></div>
+
+    <div class="week">
+      <div class="week-hdr"><span class="wbadge">What is beta?</span><span class="wtitle">Testing before full public launch</span></div>
+      <div class="tasks">
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Beta = invite only testing phase</strong> — you control who gets access, fix bugs before everyone sees it, typically 50-200 users</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Beta users are your waitlist people</strong> — they signed up early, they're invested, they'll give honest feedback</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Beta is NOT public</strong> — no advertising, no press, just your trusted early users testing the platform</div></div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hdr"><span class="wbadge">Phase 1 — Build MVP first</span><span class="wtitle">Minimum Viable Product — what you need before beta</span></div>
+      <div class="tasks">
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Signup page working</strong> — Firebase Auth connected, users can create accounts ✅ page built, need Firebase</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Login page working</strong> — users can log in and out securely ✅ page built, need Firebase</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Post a task page</strong> — poster fills in task details, selects category, sets budget, posts task</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Browse tasks page</strong> — workers see list of tasks near them, filter by category and distance</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Apply for task</strong> — worker clicks apply, sends message and price offer to poster</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Accept application</strong> — poster reviews applicants and accepts one worker</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Payment through Stripe</strong> — poster pays into escrow, money held until task complete</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Confirm task complete</strong> — poster confirms done, money releases to worker</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Review system</strong> — both sides leave 1-5 star review after task</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Basic dashboard</strong> — user sees their posted tasks, applications, earnings</div></div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hdr"><span class="wbadge">Phase 2 — Beta launch</span><span class="wtitle">Invite your waitlist — 50 people max</span></div>
+      <div class="tasks">
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Email your waitlist</strong> — "QuickGigs beta is ready! You're one of 50 people getting early access. Here's your invite link."</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Create beta invite codes</strong> — only people with codes can sign up, prevents random people joining before ready</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Set up feedback form</strong> — Google Form asking beta users what works, what doesn't, what's missing</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Create a beta WhatsApp group</strong> — stay in touch with beta users, answer questions, fix bugs fast</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Watch for bugs daily</strong> — check Oracle database for errors, check Firebase for failed logins, fix fast</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Run beta for 4-6 weeks</strong> — enough time to find all problems before public launch</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Make sure at least 5-10 real tasks complete</strong> — real money, real workers, real posters, real reviews</div></div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hdr"><span class="wbadge">Phase 3 — Public launch</span><span class="wtitle">Open to everyone in Canada</span></div>
+      <div class="tasks">
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Remove invite code restriction</strong> — anyone in Canada can sign up</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Launch press release</strong> — "Canadian student launches TaskRabbit alternative for all of Canada"</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Post on Product Hunt</strong> — massive tech community, could get thousands of new users in one day</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Start paid Facebook and Instagram ads</strong> — $5-20 per day targeting Calgary and Edmonton first</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Email entire waitlist</strong> — "We're live! Come sign up for real this time 🎉"</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Post everywhere again</strong> — Reddit, Facebook groups, LinkedIn, TikTok, Instagram — full promotion push</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Apply for PrairiesCan BEP Fund</strong> — now you have real users and traction to show them</div></div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hdr"><span class="wbadge">Timeline estimate</span><span class="wtitle">Realistic schedule</span></div>
+      <div class="tasks">
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Month 1-2 → Build MVP</strong> — fix Firebase, connect database, build all core pages, integrate Stripe</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Month 3 → Beta launch</strong> — invite 50 waitlist users, collect feedback, fix bugs</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Month 4 → Public launch</strong> — open to all of Canada, start paid marketing</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Month 5-6 → Growth</strong> — first revenue, apply for grants, add Phase 2 features</div></div>
+        <div class="task" onclick="tick(this)"><div class="chk"></div><div class="task-txt"><strong>Year 1 → Scale</strong> — all Canadian cities, mobile app, AI features, team building</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
 <script>
 var ticked = JSON.parse(localStorage.getItem('motechco-ticked') || '[]');
@@ -368,6 +554,7 @@ function updateProgress() {
   document.getElementById('prog-lbl').textContent = pct + '%';
 }
 
+// New sections added
 window.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.task').forEach(function(el) {
     var txt = el.querySelector('.task-txt');
